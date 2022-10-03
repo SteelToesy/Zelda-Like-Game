@@ -1,0 +1,5 @@
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\obj\Debug\netcoreapp3.0\CSharp-Advanced.csproj.AssemblyReference.cache
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\obj\Debug\netcoreapp3.0\CSharp-Advanced.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\obj\Debug\netcoreapp3.0\CSharp-Advanced.AssemblyInfoInputs.cache
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\obj\Debug\netcoreapp3.0\CSharp-Advanced.AssemblyInfo.cs
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\obj\Debug\netcoreapp3.0\CSharp-Advanced.csproj.CoreCompileInputs.cache
