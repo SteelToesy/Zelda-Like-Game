@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monogame Game", "Monogame Game.csproj", "{A05ED9C7-1E67-459B-8F70-8A0092B5F7C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monogae Gae", "Monogae Gae.csproj", "{0D449A72-76F7-48D9-94A3-938A1935D03D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A05ED9C7-1E67-459B-8F70-8A0092B5F7C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A05ED9C7-1E67-459B-8F70-8A0092B5F7C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A05ED9C7-1E67-459B-8F70-8A0092B5F7C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A05ED9C7-1E67-459B-8F70-8A0092B5F7C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D449A72-76F7-48D9-94A3-938A1935D03D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D449A72-76F7-48D9-94A3-938A1935D03D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D449A72-76F7-48D9-94A3-938A1935D03D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D449A72-76F7-48D9-94A3-938A1935D03D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F27E6D95-1AA5-4141-B003-4AC4531B6F31}
+		SolutionGuid = {09856F07-B87A-4CD0-9C0C-970F3CA67652}
 	EndGlobalSection
 EndGlobal

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dion Vos\\Documents\\GitHub\\Zelda-Like-Game\\Monogame Game\\Monogame Game.csproj": {}
+    "C:\\Users\\Dion Vos\\Documents\\GitHub\\Zelda-Like-Game\\Monogae Gae\\Monogae Gae.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dion Vos\\Documents\\GitHub\\Zelda-Like-Game\\Monogame Game\\Monogame Game.csproj": {
+    "C:\\Users\\Dion Vos\\Documents\\GitHub\\Zelda-Like-Game\\Monogae Gae\\Monogae Gae.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dion Vos\\Documents\\GitHub\\Zelda-Like-Game\\Monogame Game\\Monogame Game.csproj",
-        "projectName": "Monogame Game",
-        "projectPath": "C:\\Users\\Dion Vos\\Documents\\GitHub\\Zelda-Like-Game\\Monogame Game\\Monogame Game.csproj",
+        "projectUniqueName": "C:\\Users\\Dion Vos\\Documents\\GitHub\\Zelda-Like-Game\\Monogae Gae\\Monogae Gae.csproj",
+        "projectName": "Monogae Gae",
+        "projectPath": "C:\\Users\\Dion Vos\\Documents\\GitHub\\Zelda-Like-Game\\Monogae Gae\\Monogae Gae.csproj",
         "packagesPath": "C:\\Users\\Dion Vos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dion Vos\\Documents\\GitHub\\Zelda-Like-Game\\Monogame Game\\obj\\",
+        "outputPath": "C:\\Users\\Dion Vos\\Documents\\GitHub\\Zelda-Like-Game\\Monogae Gae\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -22,15 +22,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows"
+          "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0-windows7.0": {
-            "targetAlias": "net6.0-windows",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -41,14 +41,14 @@
         }
       },
       "frameworks": {
-        "net6.0-windows7.0": {
-          "targetAlias": "net6.0-windows",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "MonoGame.Content.Builder.Task": {
               "target": "Package",
               "version": "[3.8.1.303, )"
             },
-            "MonoGame.Framework.WindowsDX": {
+            "MonoGame.Framework.DesktopGL": {
               "target": "Package",
               "version": "[3.8.1.303, )"
             }
@@ -67,9 +67,6 @@
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WindowsForms": {
-              "privateAssets": "none"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
