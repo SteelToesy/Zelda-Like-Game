@@ -1,16 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace Assignments.Assignment1
 {
     public class Game1 : Game
     {
+        public List<GameObject> gameObjects = new List<GameObject>();
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-
-        public Texture2D player, 
-                         gate,
+        
+        public Texture2D gate,
                          shield,
                          sword, 
                          playerAndShield, 
@@ -35,13 +36,12 @@ namespace Assignments.Assignment1
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            player = Content.Load<Texture2D>("Knight");
-            gate = Content.Load<Texture2D>("Gate");
-            shield = Content.Load<Texture2D>("Shield");
-            sword = Content.Load<Texture2D>("Weapon");
-            playerAndShield = Content.Load<Texture2D>("KnightShield");
-            playerAndSword = Content.Load<Texture2D>("KnightWeapon");
-            playerAndShieldAndSword = Content.Load<Texture2D>("KnightWeaponShield");
+            Texture2D playerTexture = Content.Load<Texture2D>("Assets/Knight");
+            gate = Content.Load<Texture2D>("Assets/Gate");
+            shield = Content.Load<Texture2D>("Assets/Shield");
+            sword = Content.Load<Texture2D>("Assets/Weapon");
+
+            gameObjects.Add(new Player(playerTexture));
             // TODO: use this.Content to load your game content here
         }
 
@@ -49,6 +49,9 @@ namespace Assignments.Assignment1
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            foreach (var gameObject in gameObjects)
+                gameObject.Update(gameTime);
 
             // TODO: Add your update logic here
 
@@ -60,14 +63,15 @@ namespace Assignments.Assignment1
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
             _spriteBatch.Begin();
-            _spriteBatch.Draw(player, new Vector2(100, 100), Color.White);
-            _spriteBatch.Draw(gate, new Vector2(100, 100), Color.White);
-            _spriteBatch.Draw(shield, new Vector2(100, 100), Color.White);
-            _spriteBatch.Draw(sword, new Vector2(100, 100), Color.White);
-            _spriteBatch.Draw(playerAndShield, new Vector2(100, 100), Color.White);
-            _spriteBatch.Draw(playerAndSword, new Vector2(100, 100), Color.White);
-            _spriteBatch.Draw(playerAndShieldAndSword, new Vector2(100, 100), Color.White);
+            foreach (var gameObject in gameObjects)
+                gameObject.Draw(_spriteBatch);
+
+            
+            _spriteBatch.Draw(gate, new Vector2(100, 0), Color.White);
+            _spriteBatch.Draw(shield, new Vector2(200, 0), Color.White);
+            _spriteBatch.Draw(sword, new Vector2(300, 0), Color.White);
             _spriteBatch.End();
             
             base.Draw(gameTime);

@@ -7,19 +7,22 @@ namespace Assignments.Assignment1
     {
         protected string _name;
         protected Vector2 _position;
-        public GameObject(string pName, Vector2 pPosition)
+        protected Texture2D _texture;
+        public GameObject(string pName, Vector2 pPosition, Texture2D pTexture)
         {
             _name = pName;
             _position = pPosition;
+            _texture = pTexture;
         }
-        protected virtual void Update(GameTime gameTime)
+        
+        public virtual void Update(GameTime gameTime)
         {
 
         }
 
-        protected virtual void Draw(SpriteBatch spritebatch)
+        public virtual void Draw(SpriteBatch spritebatch)
         {
-            
+            spritebatch.Draw(_texture, _position, Color.White);
         }
     }
 }

@@ -30,3 +30,10 @@ C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net
 C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets Opdracht 1 - The Player\KnightWeaponShield.xnb
 C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets Opdracht 1 - The Player\Shield.xnb
 C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets Opdracht 1 - The Player\Weapon.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\Gate.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\Knight.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\KnightShield.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\KnightWeapon.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\KnightWeaponShield.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\Shield.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\Weapon.xnb
