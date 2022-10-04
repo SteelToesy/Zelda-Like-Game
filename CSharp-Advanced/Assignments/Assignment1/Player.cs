@@ -9,7 +9,7 @@ namespace Assignments.Assignment1
     {
         private float _speed = 2f;
         
-        public Player(Texture2D texture) : base("player", new Vector2(100, 100), texture)
+        public Player(Texture2D texture) : base("player", new Vector2(400, 400), texture)
         {
             
         }

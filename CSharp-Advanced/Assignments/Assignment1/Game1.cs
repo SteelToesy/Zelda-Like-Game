@@ -12,8 +12,6 @@ namespace Assignments.Assignment1
         private SpriteBatch _spriteBatch;
         
         public Texture2D gate,
-                         shield,
-                         sword, 
                          playerAndShield, 
                          playerAndSword, 
                          playerAndShieldAndSword;
@@ -38,10 +36,12 @@ namespace Assignments.Assignment1
 
             Texture2D playerTexture = Content.Load<Texture2D>("Assets/Knight");
             gate = Content.Load<Texture2D>("Assets/Gate");
-            shield = Content.Load<Texture2D>("Assets/Shield");
-            sword = Content.Load<Texture2D>("Assets/Weapon");
+            Texture2D shield = Content.Load<Texture2D>("Assets/Shield");
+            Texture2D weapon = Content.Load<Texture2D>("Assets/Weapon");
 
             gameObjects.Add(new Player(playerTexture));
+            gameObjects.Add(new Weapon(weapon));
+            gameObjects.Add(new Shield(shield));
             // TODO: use this.Content to load your game content here
         }
 
@@ -70,8 +70,6 @@ namespace Assignments.Assignment1
 
             
             _spriteBatch.Draw(gate, new Vector2(100, 0), Color.White);
-            _spriteBatch.Draw(shield, new Vector2(200, 0), Color.White);
-            _spriteBatch.Draw(sword, new Vector2(300, 0), Color.White);
             _spriteBatch.End();
             
             base.Draw(gameTime);
