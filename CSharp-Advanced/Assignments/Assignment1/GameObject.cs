@@ -1,24 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Assignments.Assignment1
 {
     public class GameObject
     {
-
-        public GameObject()
+        protected string _name;
+        protected Vector2 _position;
+        public GameObject(string pName, Vector2 pPosition)
+        {
+            _name = pName;
+            _position = pPosition;
+        }
+        protected virtual void Update(GameTime gameTime)
         {
 
         }
 
-        protected Update()
+        protected virtual void Draw(SpriteBatch spritebatch)
         {
-
+            
         }
-
     }
 }

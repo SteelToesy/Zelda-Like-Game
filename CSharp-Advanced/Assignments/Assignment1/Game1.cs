@@ -9,6 +9,14 @@ namespace Assignments.Assignment1
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        public Texture2D player, 
+                         gate,
+                         shield,
+                         sword, 
+                         playerAndShield, 
+                         playerAndSword, 
+                         playerAndShieldAndSword;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -27,6 +35,13 @@ namespace Assignments.Assignment1
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            player = Content.Load<Texture2D>("Knight");
+            gate = Content.Load<Texture2D>("Gate");
+            shield = Content.Load<Texture2D>("Shield");
+            sword = Content.Load<Texture2D>("Weapon");
+            playerAndShield = Content.Load<Texture2D>("KnightShield");
+            playerAndSword = Content.Load<Texture2D>("KnightWeapon");
+            playerAndShieldAndSword = Content.Load<Texture2D>("KnightWeaponShield");
             // TODO: use this.Content to load your game content here
         }
 
@@ -45,7 +60,16 @@ namespace Assignments.Assignment1
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            _spriteBatch.Begin();
+            _spriteBatch.Draw(player, new Vector2(100, 100), Color.White);
+            _spriteBatch.Draw(gate, new Vector2(100, 100), Color.White);
+            _spriteBatch.Draw(shield, new Vector2(100, 100), Color.White);
+            _spriteBatch.Draw(sword, new Vector2(100, 100), Color.White);
+            _spriteBatch.Draw(playerAndShield, new Vector2(100, 100), Color.White);
+            _spriteBatch.Draw(playerAndSword, new Vector2(100, 100), Color.White);
+            _spriteBatch.Draw(playerAndShieldAndSword, new Vector2(100, 100), Color.White);
+            _spriteBatch.End();
+            
             base.Draw(gameTime);
         }
     }
