@@ -37,3 +37,8 @@ C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net
 C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\KnightWeaponShield.xnb
 C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\Shield.xnb
 C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\Weapon.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll

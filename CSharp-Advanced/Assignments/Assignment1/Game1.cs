@@ -10,11 +10,6 @@ namespace Assignments.Assignment1
         public List<GameObject> gameObjects = new List<GameObject>();
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        
-        public Texture2D gate,
-                         playerAndShield, 
-                         playerAndSword, 
-                         playerAndShieldAndSword;
 
         public Game1()
         {
@@ -35,13 +30,14 @@ namespace Assignments.Assignment1
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             Texture2D playerTexture = Content.Load<Texture2D>("Assets/Knight");
-            gate = Content.Load<Texture2D>("Assets/Gate");
+            Texture2D gate = Content.Load<Texture2D>("Assets/Gate");
             Texture2D shield = Content.Load<Texture2D>("Assets/Shield");
             Texture2D weapon = Content.Load<Texture2D>("Assets/Weapon");
 
             gameObjects.Add(new Player(playerTexture));
             gameObjects.Add(new Weapon(weapon));
             gameObjects.Add(new Shield(shield));
+            gameObjects.Add(new Gate(gate));
             // TODO: use this.Content to load your game content here
         }
 
@@ -51,7 +47,7 @@ namespace Assignments.Assignment1
                 Exit();
 
             foreach (var gameObject in gameObjects)
-                gameObject.Update(gameTime);
+                gameObject.Update(gameTime, gameObjects);
 
             // TODO: Add your update logic here
 
@@ -67,9 +63,6 @@ namespace Assignments.Assignment1
             _spriteBatch.Begin();
             foreach (var gameObject in gameObjects)
                 gameObject.Draw(_spriteBatch);
-
-            
-            _spriteBatch.Draw(gate, new Vector2(100, 0), Color.White);
             _spriteBatch.End();
             
             base.Draw(gameTime);

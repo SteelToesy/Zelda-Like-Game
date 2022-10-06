@@ -1,14 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-
 namespace Assignments.Assignment1
 {
-    internal class Shield : GameObject
+    internal class Gate : GameObject
     {
-        public Shield(Texture2D texture) : base("shield", new Vector2(600, 200), texture)
+        public Gate(Texture2D texture) : base("gate", new Vector2(400, 200), texture)
         {
-
         }
     }
 }
