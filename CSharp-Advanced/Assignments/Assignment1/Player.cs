@@ -10,12 +10,12 @@ namespace Assignments.Assignment1
     {
         private float _speed = 5f;
 
-        public Player(Texture2D texture) : base("player", new Vector2(400, 400), texture)
+        public Player(params Texture2D[] textures) : base("player", new Vector2(400, 400), textures)
         {
             
         }
 
-        public override void Update(GameTime pGameTime, List<GameObject> gameObjects)
+        public override void Update(GameTime pGameTime, List<GameObject> gameObjects, List<Texture2D> pTextures)
         {
 
             Vector2 movement = Vector2.Zero;
@@ -32,7 +32,7 @@ namespace Assignments.Assignment1
             _position = new Vector2(_position.X + movement.X * _speed, _position.Y + movement.Y * _speed);
 
 
-            base.Update(pGameTime, gameObjects);  
+            base.Update(pGameTime, gameObjects, pTextures);  
         }
     }
 }

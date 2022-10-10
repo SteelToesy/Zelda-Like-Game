@@ -10,32 +10,40 @@ namespace Assignments.Assignment1
         protected string _name;
         protected Vector2 _position;
         protected Texture2D _texture;
+        public List<Texture2D> textures = new List<Texture2D>();
+        public int textureIndexer = 0;
+        public bool enabled = true;
+
+        public Texture2D texture
+        {
+            get => textures[textureIndexer];
+        }
+
         public Rectangle collisionBox
         {
-            get
-            {
-                  return new Rectangle((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height);
-            }
-        }
-        public GameObject(string pName, Vector2 pPosition, Texture2D pTexture)
-        {
-            _name = pName;
-            _position = pPosition;
-            _texture = pTexture;
+            get => new Rectangle((int)_position.X, (int)_position.Y, texture.Width, texture.Height);
         }
         
-        public virtual void Update(GameTime pGameTime, List<GameObject> gameObjects)
+        public GameObject(string pName, Vector2 pPosition, params Texture2D[] pTextures)
         {
+            _name = pName; 
+            _position = pPosition;
+            textures = new List<Texture2D>(pTextures);
+        }
+        
+        public virtual void Update(GameTime pGameTime, List<GameObject> pGameObjects, List<Texture2D> pTextures)
+        {
+            OnCollision(pGameObjects);
         }
 
         public virtual void Draw(SpriteBatch pSpritebatch)
-        {
-            pSpritebatch.Draw(_texture, _position, Color.White);
+        { 
+            pSpritebatch.Draw(texture, _position, Color.White);
         }
 
-        public bool CheckCollision(GameObject pGameObject)
+        public virtual void OnCollision(List<GameObject> pGameObject)
         {
-            return collisionBox.Intersects(pGameObject.collisionBox);
+            
         }
     }
 }
