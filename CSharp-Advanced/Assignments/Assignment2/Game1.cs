@@ -30,23 +30,27 @@ namespace Assignments.Assignment2
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            //Textures for the player
             Texture2D knight = Content.Load<Texture2D>("Assets/Knight");
-
+            Texture2D knightShield = Content.Load<Texture2D>("Assets/KnightShield");
+            Texture2D knightWeapon = Content.Load<Texture2D>("Assets/KnightWeapon");
+            Texture2D knightWeaponShield = Content.Load<Texture2D>("Assets/KnightWeaponShield");
             
-            //textures.Add(Content.Load<Texture2D>("Assets/Knight"));
-            Texture2D tex1 = Content.Load<Texture2D>("Assets/KnightShield");
-            Texture2D tex2 = Content.Load<Texture2D>("Assets/KnightWeapon");
-            Texture2D tex3 = Content.Load<Texture2D>("Assets/KnightWeaponShield");
-            Texture2D tex4 = Content.Load<Texture2D>("Assets/Gate");
-            Texture2D tex5 = Content.Load<Texture2D>("Assets/Shield");
-            Texture2D tex6 = Content.Load<Texture2D>("Assets/Weapon");
+            Texture2D gate = Content.Load<Texture2D>("Assets/Gate");
+            Texture2D shield = Content.Load<Texture2D>("Assets/Shield");
+            Texture2D weapon = Content.Load<Texture2D>("Assets/Weapon");
 
-            Player player = new Player(knight, tex1, tex2, tex3);
+            //Create the objects
+            Player player = new Player(knight, knightShield, knightWeapon, knightWeaponShield);
+            Shield shieldObject = new Shield(shield, player);
+            Weapon weaponObject = new Weapon(weapon, player);
+            Gate gateObject = new Gate(gate);
+
+            //Add the objects to the list
             gameObjects.Add(player);
-            gameObjects.Add(new Weapon(tex6, player));
-            gameObjects.Add(new Shield(tex5));
-            gameObjects.Add(new Gate(tex4));
-            // TODO: use this.Content to load your game content here
+            gameObjects.Add(weaponObject);
+            gameObjects.Add(shieldObject);
+            gameObjects.Add(gateObject);
         }
 
         protected override void Update(GameTime gameTime)
@@ -54,10 +58,9 @@ namespace Assignments.Assignment2
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            //Update each gameobject
             foreach (var gameObject in gameObjects.Where((GameObject x) => x.enabled)) 
                 gameObject.Update(gameTime, gameObjects);
-
-            // TODO: Add your update logic here
 
             base.Update(gameTime);
         }
@@ -66,8 +69,7 @@ namespace Assignments.Assignment2
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
-
+            //Draw each gameobject
             _spriteBatch.Begin();
             foreach (var gameObject in gameObjects.Where((GameObject x) => x.enabled))
                 gameObject.Draw(_spriteBatch);

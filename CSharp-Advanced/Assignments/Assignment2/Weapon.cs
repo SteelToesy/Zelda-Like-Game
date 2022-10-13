@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Assignments.Assignment1;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,12 @@ namespace Assignments.Assignment2
     internal class Weapon : GameObject
     {
         Player _player;
+        private Texture2D _texture;
         
-        public Weapon(Texture2D texture, Player pPlayer) : base("weapon", new Vector2(100, 200), texture)
+        public Weapon(Texture2D pTexture, Player pPlayer) : base("weapon", new Vector2(100, 200), pTexture)
         {
             _player = pPlayer;
+            _texture = pTexture;
         }
 
         public override void Update(GameTime pGameTime, List<GameObject> pGameObjects)
@@ -23,22 +26,16 @@ namespace Assignments.Assignment2
         {
             if(collisionBox.Intersects(_player.collisionBox))
             {
-                if (_player.textureIndexer == (int)Texture.PlayerWithShield)
-                    _player.textureIndexer = (int)Texture.PlayerWithWeaponAndShield;
+                if (_player.textureIndexer == (int)PlayerTexture.PlayerWithShield)
+                    _player.textureIndexer = (int)PlayerTexture.PlayerWithWeaponAndShield;
                 else
-                    _player.textureIndexer = (int)Texture.PlayerWithWeapon;
+                    _player.textureIndexer = (int)PlayerTexture.PlayerWithWeapon;
                 enabled = false;
             }   
-            
-
-            //if (this.collisionBox.Intersects(pGameObjects[0].collisionBox))
-            //{
-            //    if (pGameObjects[0].textureIndexer == (int)Texture.PlayerWithShield)
-            //        pGameObjects[0].textureIndexer = (int)Texture.PlayerWithWeaponAndShield;
-            //    else
-            //        pGameObjects[0].textureIndexer = (int)Texture.PlayerWithWeapon;
-            //    enabled = false;
-            //}
+        }
+        public override void Draw(SpriteBatch pSpritebatch)
+        {
+            pSpritebatch.Draw(_texture, _position, Color.White);
         }
     }
 }

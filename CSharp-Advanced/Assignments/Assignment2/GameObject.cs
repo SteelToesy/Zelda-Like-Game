@@ -5,43 +5,26 @@ using System.Collections.Generic;
 
 namespace Assignments.Assignment2
 {
-    public enum Texture
-    {
-        Player,
-        PlayerWithShield,
-        PlayerWithWeapon,
-        PlayerWithWeaponAndShield,
-        Shield,
-        Weapon,
-        Gate
-    }
-
     public class GameObject
     {
+        private Texture2D _texture;
+
         protected string _name;
         protected Vector2 _position;
-        protected Texture2D _texture;
-
-        protected List<Texture2D> _textures = new List<Texture2D>();
-
-        public int textureIndexer = 0;
+        
         public bool enabled = true;
-
-        public Texture2D texture
-        {
-            get => _textures[textureIndexer];
-        }
-
+        public int textureIndexer = 0;
+        
         public Rectangle collisionBox
         {
-            get => new Rectangle((int)_position.X, (int)_position.Y, texture.Width, texture.Height);
+            get => new Rectangle((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height);
         }
         
         public GameObject(string pName, Vector2 pPosition, params Texture2D[] pTextures)
         {
             _name = pName; 
             _position = pPosition;
-            _textures = new List<Texture2D>(pTextures);
+            _texture = pTextures[textureIndexer];
         }
         
         public virtual void Update(GameTime pGameTime, List<GameObject> pGameObjects)
@@ -51,7 +34,7 @@ namespace Assignments.Assignment2
 
         public virtual void Draw(SpriteBatch pSpritebatch)
         { 
-            pSpritebatch.Draw(texture, _position, Color.White);
+            
         }
 
         public virtual void OnCollision(List<GameObject> pGameObject)
