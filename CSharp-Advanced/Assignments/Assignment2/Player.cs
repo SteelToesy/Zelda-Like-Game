@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
-namespace Assignments.Assignment1
+namespace Assignments.Assignment2
 {
     internal class Player : GameObject 
     {

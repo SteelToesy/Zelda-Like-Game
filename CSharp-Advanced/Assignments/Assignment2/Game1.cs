@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Assignments.Assignment1
+namespace Assignments.Assignment2
 {
     public class Game1 : Game
     {

@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace Assignments.Assignment1
+namespace Assignments.Assignment2
 {
     internal class Shield : GameObject
     {
