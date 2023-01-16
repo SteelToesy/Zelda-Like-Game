@@ -8,7 +8,7 @@ namespace Assignments.AssignmentDion
 {
     public class SceneManager
     {
-
+        // all scenes
         public void LoadScene()
         {
 
@@ -19,4 +19,5 @@ namespace Assignments.AssignmentDion
 
         }
     }
+    //scene class?
 }

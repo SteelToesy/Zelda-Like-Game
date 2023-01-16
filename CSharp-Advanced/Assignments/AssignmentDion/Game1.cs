@@ -48,8 +48,7 @@ namespace Assignments.AssignmentDion
                 Exit();
 
             //Update each gameobject
-            //foreach (var gameObject in gameObjects.Where((GameObject x) => x.enabled)) 
-            //    gameObject.Update(gameTime, gameObjects);
+
 
             base.Update(gameTime);
         }
@@ -60,8 +59,6 @@ namespace Assignments.AssignmentDion
 
             //Draw each gameobject
             _spriteBatch.Begin();
-            //foreach (var gameObject in gameObjects.Where((GameObject x) => x.enabled))
-            //    gameObject.Draw(_spriteBatch);
             _spriteBatch.End();
             
             base.Draw(gameTime);

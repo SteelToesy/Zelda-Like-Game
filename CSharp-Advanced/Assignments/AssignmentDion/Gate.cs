@@ -8,6 +8,7 @@ namespace Assignments.AssignmentDion
 {
     internal class Gate : GameObject
     {
+        // a single texture
         public Gate()
         {
 

@@ -7,6 +7,9 @@ namespace Assignments.AssignmentDion
 {
     public class GameObject
     {
+        // a position
+        
+        // a transform
 
         public GameObject()
         {

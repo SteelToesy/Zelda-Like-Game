@@ -8,7 +8,13 @@ namespace Assignments.Assignment2
 {
     public class Game1 : Game
     {
-        public List<GameObject> gameObjects = new List<GameObject>();
+        public List<Scenes> scenes = new List<Scenes>();
+
+        Menu menu = new Menu();
+        Level1 level1 = new Level1();
+
+        public SceneManager sceneManager = new SceneManager();
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
@@ -22,7 +28,7 @@ namespace Assignments.Assignment2
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            
             base.Initialize();
         }
 
@@ -46,11 +52,7 @@ namespace Assignments.Assignment2
             Weapon weaponObject = new Weapon(weapon, player);
             Gate gateObject = new Gate(gate);
 
-            //Add the objects to the list
-            gameObjects.Add(player);
-            gameObjects.Add(weaponObject);
-            gameObjects.Add(shieldObject);
-            gameObjects.Add(gateObject);
+            sceneManager.LoadScene(sceneManager.scenes[1]);
         }
 
         protected override void Update(GameTime gameTime)
@@ -59,8 +61,7 @@ namespace Assignments.Assignment2
                 Exit();
 
             //Update each gameobject
-            foreach (var gameObject in gameObjects.Where((GameObject x) => x.enabled)) 
-                gameObject.Update(gameTime, gameObjects);
+            //foreach gameobject in "scene" => Update
 
             base.Update(gameTime);
         }
@@ -71,8 +72,8 @@ namespace Assignments.Assignment2
 
             //Draw each gameobject
             _spriteBatch.Begin();
-            foreach (var gameObject in gameObjects.Where((GameObject x) => x.enabled))
-                gameObject.Draw(_spriteBatch);
+            //foreach gameobject in "scene" => Draw
+
             _spriteBatch.End();
             
             base.Draw(gameTime);

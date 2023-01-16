@@ -9,7 +9,7 @@ namespace Assignments.AssignmentDion
 {
     internal class Player : GameObject 
     {
-
+        // array of textures to switch between textures
         public Player()
         {
 
