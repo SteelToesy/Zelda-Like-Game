@@ -19,6 +19,7 @@ namespace Assignments.Assignment2
         }
         public override void OnCollision(List<GameObject> pGameObjects)
         {
+            // If the player collides with the gate, the game ends
             if (this.collisionBox.Intersects(pGameObjects[0].collisionBox))
                 Environment.Exit(0);
         }

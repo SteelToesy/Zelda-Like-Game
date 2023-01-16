@@ -20,6 +20,7 @@ namespace Assignments.Assignment2
         }
         public override void OnCollision(List<GameObject> pGameObjects)
         {
+            // If the player collides with the shield, the player gets the shield
             if (this.collisionBox.Intersects(pGameObjects[0].collisionBox))
             {
                 if (_player.textureIndexer == (int)PlayerTexture.PlayerWithWeapon)

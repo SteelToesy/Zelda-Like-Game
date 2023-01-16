@@ -7,7 +7,7 @@ namespace Assignments.Assignment2
 {
     public class GameObject
     {
-        private Texture2D _texture;
+        private readonly Texture2D _texture;
 
         protected string _name;
         protected Vector2 _position;
@@ -17,7 +17,7 @@ namespace Assignments.Assignment2
         
         public Rectangle collisionBox
         {
-            get => new Rectangle((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height);
+            get => new((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height);
         }
         
         public GameObject(string pName, Vector2 pPosition, params Texture2D[] pTextures)

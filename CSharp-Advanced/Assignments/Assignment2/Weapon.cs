@@ -9,6 +9,7 @@ namespace Assignments.Assignment2
     internal class Weapon : GameObject
     {
         Player _player;
+        
         private Texture2D _texture;
         
         public Weapon(Texture2D pTexture, Player pPlayer) : base("weapon", new Vector2(100, 200), pTexture)
@@ -24,7 +25,8 @@ namespace Assignments.Assignment2
 
         public override void OnCollision(List<GameObject> pGameObjects)
         {
-            if(collisionBox.Intersects(_player.collisionBox))
+            // If the player collides with the weapon, the player gets the weapon   
+            if (collisionBox.Intersects(_player.collisionBox))
             {
                 if (_player.textureIndexer == (int)PlayerTexture.PlayerWithShield)
                     _player.textureIndexer = (int)PlayerTexture.PlayerWithWeaponAndShield;
