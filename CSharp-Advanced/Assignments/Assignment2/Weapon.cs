@@ -9,10 +9,8 @@ namespace Assignments.Assignment2
     internal class Weapon : GameObject
     {
         Player _player;
-        
-        private Texture2D _texture;
-        
-        public Weapon(Texture2D pTexture, Player pPlayer) : base("weapon", new Vector2(100, 200), pTexture)
+                
+        public Weapon(Texture2D pTexture, Player pPlayer) : base ("Weapon")
         {
             _player = pPlayer;
             _texture = pTexture;
@@ -23,7 +21,7 @@ namespace Assignments.Assignment2
             base.Update(pGameTime);
         }
 
-        public override void OnCollision(List<GameObject> pGameObjects)
+        public override void OnCollision()
         {
             // If the player collides with the weapon, the player gets the weapon   
             if (collisionBox.Intersects(_player.collisionBox))
@@ -37,7 +35,7 @@ namespace Assignments.Assignment2
         }
         public override void Draw(SpriteBatch pSpritebatch)
         {
-            pSpritebatch.Draw(_texture, _position, Color.White);
+            pSpritebatch.Draw(_texture, position, Color.White);
         }
     }
 }

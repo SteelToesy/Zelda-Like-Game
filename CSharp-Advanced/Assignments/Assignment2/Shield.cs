@@ -7,9 +7,8 @@ namespace Assignments.Assignment2
 {
     internal class Shield : GameObject
     {
-        Player _player;
-        private Texture2D _texture;
-        public Shield(Texture2D pTexture, Player pPlayer) : base("shield", new Vector2(600, 200), pTexture)
+        private Player _player;
+        public Shield(Texture2D pTexture, Player pPlayer) : base ("Shield")
         {
             _player = pPlayer;
             _texture = pTexture;
@@ -18,10 +17,10 @@ namespace Assignments.Assignment2
         {
             base.Update(pGameTime);
         }
-        public override void OnCollision(List<GameObject> pGameObjects)
+        public override void OnCollision()
         {
             // If the player collides with the shield, the player gets the shield
-            if (this.collisionBox.Intersects(pGameObjects[0].collisionBox))
+            if (this.collisionBox.Intersects(_player.collisionBox))
             {
                 if (_player.textureIndexer == (int)PlayerTexture.PlayerWithWeapon)
                     _player.textureIndexer = (int)PlayerTexture.PlayerWithWeaponAndShield;
@@ -32,7 +31,7 @@ namespace Assignments.Assignment2
         }
         public override void Draw(SpriteBatch pSpritebatch)
         {
-            pSpritebatch.Draw(_texture, _position, Color.White);
+            pSpritebatch.Draw(_texture, position, Color.White);
         }
     }
 }

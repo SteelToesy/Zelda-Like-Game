@@ -18,15 +18,15 @@ namespace Assignments.Assignment2
     {
         private float _speed = 5f;
         
-        protected List<Texture2D> _textures = new List<Texture2D>();
         public Texture2D texture
         {
             get => _textures[textureIndexer];
         }
 
-        public Player(params Texture2D[] textures) : base("player", new Vector2(400, 400), textures)
+        public Player(params Texture2D[] pTextures) : base ("Player")
         {
-            _textures = textures.ToList();
+            _textures = pTextures.ToList();
+            _texture = pTextures[0];
         }
 
         public override void Update(GameTime pGameTime)
@@ -43,14 +43,14 @@ namespace Assignments.Assignment2
                 movement.X += 1;
             if (movement != Vector2.Zero)
                 movement.Normalize();
-            _position = new Vector2(_position.X + movement.X * _speed, _position.Y + movement.Y * _speed);
+            position = new Vector2(position.X + movement.X * _speed, position.Y + movement.Y * _speed);
 
 
             base.Update(pGameTime);  
         }
         public override void Draw(SpriteBatch pSpritebatch)
         {
-            pSpritebatch.Draw(texture, _position, Color.White);
+            pSpritebatch.Draw(texture, position, Color.White);
         }
     }
 }

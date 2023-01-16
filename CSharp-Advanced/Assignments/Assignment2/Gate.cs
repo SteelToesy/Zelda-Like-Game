@@ -8,24 +8,26 @@ namespace Assignments.Assignment2
 {
     internal class Gate : GameObject
     {
-        private Texture2D _texture;
-        public Gate(Texture2D texture) : base("gate", new Vector2(400, 200), texture)
+        private Player _player;
+        public Gate(Texture2D texture, Player player) : base ("Gate")
         {
+            _player = player;
             _texture = texture;
         }
         public override void Update(GameTime pGameTime)
         {
             base.Update(pGameTime);
         }
-        public override void OnCollision(List<GameObject> pGameObjects)
+        public override void OnCollision()
         {
             // If the player collides with the gate, the game ends
-            if (this.collisionBox.Intersects(pGameObjects[0].collisionBox))
+            // TODO make it so that it changes scene
+            if (this.collisionBox.Intersects(_player.collisionBox))
                 Environment.Exit(0);
         }
         public override void Draw(SpriteBatch pSpritebatch)
         {
-            pSpritebatch.Draw(_texture, _position, Color.White);
+            pSpritebatch.Draw(_texture, position, Color.White);
         }
     }
 }

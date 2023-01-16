@@ -16,13 +16,13 @@ namespace Assignments.Assignment2
         //I want to be able to Update different scenes here
         public void UpdateScene(Scenes pScnene, GameTime gametime)
         {
-            pScnene.gameObjects.ForEach(obj => { obj.Update(gametime); });
+            pScnene.gameObjects.ForEach(obj => { if (obj.active) { obj.Update(gametime); }});
         }
 
         //I want to be able to Draw scenes here
         public void DrawScene(Scenes pScnene, SpriteBatch pSpriteBatch)
         {
-            pScnene.gameObjects.ForEach(obj => { obj.Draw(pSpriteBatch); });
+            pScnene.gameObjects.ForEach(obj => { if (obj.active) { obj.Draw(pSpriteBatch); } });
         }
     }
 
@@ -67,12 +67,46 @@ namespace Assignments.Assignment2
             Player player = new Player(knightTexture, knightShieldTexture, knightWeaponTexture, knightWeaponShieldTexture);
             Weapon weapon = new Weapon(weaponTexture, player);
             Shield shield = new Shield(shieldTexture, player);
-            Gate gate = new Gate(gateTexture);
+            Gate gate = new Gate(gateTexture, player);
 
             gameObjects.Add(weapon);
             gameObjects.Add(shield);
             gameObjects.Add(player);
             gameObjects.Add(gate);
+
+            player.position = new Vector2(400 , 400);
+            weapon.position = new Vector2(200, 200);
+            shield.position = new Vector2(600, 200);
+            gate.position = new Vector2(400, 150);
+        }
+    }
+
+    public class Level2 : Scenes
+    {
+        public Level2(ContentManager Content)
+        {
+            //Textures for the player
+            Texture2D knightTexture = Content.Load<Texture2D>("Assets/Knight");
+            Texture2D knightShieldTexture = Content.Load<Texture2D>("Assets/KnightShield");
+            Texture2D knightWeaponTexture = Content.Load<Texture2D>("Assets/KnightWeapon");
+            Texture2D knightWeaponShieldTexture = Content.Load<Texture2D>("Assets/KnightWeaponShield");
+
+            textures.Add(knightTexture);
+            textures.Add(knightShieldTexture);
+            textures.Add(knightWeaponTexture);
+            textures.Add(knightWeaponShieldTexture);
+
+            Texture2D gateTexture = Content.Load<Texture2D>("Assets/Gate");
+            textures.Add(gateTexture);
+
+            Player player = new Player(knightTexture, knightShieldTexture, knightWeaponTexture, knightWeaponShieldTexture);
+            Gate gate = new Gate(gateTexture, player);
+
+            gameObjects.Add(player);
+            gameObjects.Add(gate);
+
+            player.position = new Vector2(400, 400);
+            gate.position = new Vector2(400, 150);
         }
     }
 }

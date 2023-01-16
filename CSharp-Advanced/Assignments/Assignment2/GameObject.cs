@@ -7,29 +7,29 @@ namespace Assignments.Assignment2
 {
     public class GameObject
     {
-        private readonly Texture2D _texture;
+        protected Texture2D _texture;
+        protected List<Texture2D> _textures = new List<Texture2D>();
 
         protected string _name;
-        protected Vector2 _position;
-        
-        public bool active = true;
+        public Vector2 position;
+
         public int textureIndexer = 0;
+
+        public bool active = true;
         
         public Rectangle collisionBox
         {
-            get => new((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height);
+            get => new((int)position.X, (int)position.Y, _texture.Width, _texture.Height);
         }
         
-        public GameObject(string pName, Vector2 pPosition, params Texture2D[] pTextures)
+        public GameObject(string pName, params Texture2D[] pTextures)
         {
-            _name = pName; 
-            _position = pPosition;
-            _texture = pTextures[textureIndexer];
+
         }
         
         public virtual void Update(GameTime pGameTime)
         {
-            //OnCollision(pGameObjects);
+            OnCollision();
         }
 
         public virtual void Draw(SpriteBatch pSpritebatch)
@@ -37,7 +37,7 @@ namespace Assignments.Assignment2
             
         }
 
-        public virtual void OnCollision(List<GameObject> pGameObject)
+        public virtual void OnCollision()
         {
             
         }
