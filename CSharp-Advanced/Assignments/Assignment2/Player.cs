@@ -29,7 +29,7 @@ namespace Assignments.Assignment2
             _textures = textures.ToList();
         }
 
-        public override void Update(GameTime pGameTime, List<GameObject> gameObjects)
+        public override void Update(GameTime pGameTime)
         {
             // Normailized movement
             Vector2 movement = Vector2.Zero;
@@ -46,7 +46,7 @@ namespace Assignments.Assignment2
             _position = new Vector2(_position.X + movement.X * _speed, _position.Y + movement.Y * _speed);
 
 
-            base.Update(pGameTime, gameObjects);  
+            base.Update(pGameTime);  
         }
         public override void Draw(SpriteBatch pSpritebatch)
         {

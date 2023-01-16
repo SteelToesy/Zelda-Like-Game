@@ -13,9 +13,9 @@ namespace Assignments.Assignment2
         {
             _texture = texture;
         }
-        public override void Update(GameTime pGameTime, List<GameObject> pGameObjects)
+        public override void Update(GameTime pGameTime)
         {
-            base.Update(pGameTime, pGameObjects);
+            base.Update(pGameTime);
         }
         public override void OnCollision(List<GameObject> pGameObjects)
         {

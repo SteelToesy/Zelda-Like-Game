@@ -14,9 +14,9 @@ namespace Assignments.Assignment2
             _player = pPlayer;
             _texture = pTexture;
         }
-        public override void Update(GameTime pGameTime, List<GameObject> pGameObjects)
+        public override void Update(GameTime pGameTime)
         {
-            base.Update(pGameTime, pGameObjects);
+            base.Update(pGameTime);
         }
         public override void OnCollision(List<GameObject> pGameObjects)
         {
@@ -27,7 +27,7 @@ namespace Assignments.Assignment2
                     _player.textureIndexer = (int)PlayerTexture.PlayerWithWeaponAndShield;
                 else
                     _player.textureIndexer = (int)PlayerTexture.PlayerWithShield;
-                enabled = false;
+                active = false;
             }
         }
         public override void Draw(SpriteBatch pSpritebatch)

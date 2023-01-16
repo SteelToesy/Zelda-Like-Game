@@ -12,7 +12,7 @@ namespace Assignments.Assignment2
         protected string _name;
         protected Vector2 _position;
         
-        public bool enabled = true;
+        public bool active = true;
         public int textureIndexer = 0;
         
         public Rectangle collisionBox
@@ -27,9 +27,9 @@ namespace Assignments.Assignment2
             _texture = pTextures[textureIndexer];
         }
         
-        public virtual void Update(GameTime pGameTime, List<GameObject> pGameObjects)
+        public virtual void Update(GameTime pGameTime)
         {
-            OnCollision(pGameObjects);
+            //OnCollision(pGameObjects);
         }
 
         public virtual void Draw(SpriteBatch pSpritebatch)

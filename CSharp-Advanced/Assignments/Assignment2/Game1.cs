@@ -9,10 +9,6 @@ namespace Assignments.Assignment2
     public class Game1 : Game
     {
         public List<Scenes> scenes = new List<Scenes>();
-
-        Menu menu = new Menu();
-        Level1 level1 = new Level1();
-
         public SceneManager sceneManager = new SceneManager();
 
         private GraphicsDeviceManager _graphics;
@@ -26,9 +22,7 @@ namespace Assignments.Assignment2
         }
 
         protected override void Initialize()
-        {
-            // TODO: Add your initialization logic here
-            
+        {            
             base.Initialize();
         }
 
@@ -36,33 +30,16 @@ namespace Assignments.Assignment2
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //Textures for the player
-            Texture2D knight = Content.Load<Texture2D>("Assets/Knight");
-            Texture2D knightShield = Content.Load<Texture2D>("Assets/KnightShield");
-            Texture2D knightWeapon = Content.Load<Texture2D>("Assets/KnightWeapon");
-            Texture2D knightWeaponShield = Content.Load<Texture2D>("Assets/KnightWeaponShield");
-            
-            Texture2D gate = Content.Load<Texture2D>("Assets/Gate");
-            Texture2D shield = Content.Load<Texture2D>("Assets/Shield");
-            Texture2D weapon = Content.Load<Texture2D>("Assets/Weapon");
+            Menu menu = new(Content);
+            Level1 level1 = new(Content);
 
-            //Create the objects
-            Player player = new Player(knight, knightShield, knightWeapon, knightWeaponShield);
-            Shield shieldObject = new Shield(shield, player);
-            Weapon weaponObject = new Weapon(weapon, player);
-            Gate gateObject = new Gate(gate);
-
-            sceneManager.LoadScene(sceneManager.scenes[1]);
+            scenes.Add(menu);
+            scenes.Add(level1);
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            //Update each gameobject
-            //foreach gameobject in "scene" => Update
-
+            sceneManager.UpdateScene(scenes[1], gameTime);
             base.Update(gameTime);
         }
 
@@ -70,9 +47,9 @@ namespace Assignments.Assignment2
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            //Draw each gameobject
             _spriteBatch.Begin();
-            //foreach gameobject in "scene" => Draw
+
+            sceneManager.DrawScene(scenes[1], _spriteBatch);
 
             _spriteBatch.End();
             
