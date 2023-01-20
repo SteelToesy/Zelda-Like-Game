@@ -8,11 +8,11 @@ namespace Assignments.Assignment2
 {
     internal class Gate : GameObject
     {
-        private int _Scene;
+        private Scenes _Scene;
         private GameObject _player;
         public Gate(Texture2D texture, GameObject player, Scenes scene) : base ("Gate")
         {
-            _Scene = (int)scene;
+            _Scene = scene;
             _player = player;
             _texture = texture;
         }

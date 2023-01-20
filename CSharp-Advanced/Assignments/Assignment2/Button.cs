@@ -1,5 +1,4 @@
 ﻿using Assignments.Assignment1;
-using Assignments.AssignmentDion;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -21,13 +20,11 @@ namespace Assignments.Assignment2
 
     internal class Button : GameObject
     {
-        private int _Scene;
-        ButtonStates state;
-        Color buttonColor;
-        public Button(Texture2D pTexture, Scenes scene) : base("Button")
+        protected ButtonStates state;
+        protected Color buttonColor;
+        public Button() : base("Button")
         {
-            _Scene = (int)scene;
-            _texture = pTexture;
+
         }
 
         public override void Update(GameTime pGameTime)
@@ -69,14 +66,9 @@ namespace Assignments.Assignment2
             base.Update(pGameTime);
         }   
 
-        public override void Draw(SpriteBatch pSpritebatch)
+        public virtual void ButtonAction()
         {
-            pSpritebatch.Draw(_texture, position, buttonColor);
-        }
 
-        public void ButtonAction()
-        {
-            Game1.currentScene = _Scene;
         }
     }
 }

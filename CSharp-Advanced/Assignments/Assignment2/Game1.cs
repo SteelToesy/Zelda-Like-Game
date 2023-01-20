@@ -1,12 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Assignments.Assignment2
 {
-    enum Scenes
+    public enum Scenes
     {
         Menu,
         Level1,
@@ -14,7 +15,7 @@ namespace Assignments.Assignment2
     }
     public class Game1 : Game
     {
-        public static int currentScene = 0;
+        public static Scenes currentScene = Scenes.Menu;
         public List<Scene> scenes = new List<Scene>();
         public SceneManager sceneManager = new SceneManager();
 
@@ -48,7 +49,8 @@ namespace Assignments.Assignment2
 
         protected override void Update(GameTime gameTime)
         {
-            sceneManager.UpdateScene(scenes[currentScene], gameTime);
+            //Console.WriteLine(scenes[1].ToString());
+            sceneManager.UpdateScene(scenes[(int)currentScene], gameTime);
             base.Update(gameTime);
         }
 
@@ -58,7 +60,7 @@ namespace Assignments.Assignment2
 
             _spriteBatch.Begin();
 
-            sceneManager.DrawScene(scenes[currentScene], _spriteBatch);
+            sceneManager.DrawScene(scenes[(int)currentScene], _spriteBatch);
 
             _spriteBatch.End();
             

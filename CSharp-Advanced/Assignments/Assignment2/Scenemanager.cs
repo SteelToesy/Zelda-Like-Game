@@ -37,15 +37,18 @@ namespace Assignments.Assignment2
     {
         public Menu(ContentManager Content)
         {
-            #region Textures for the button
-            Texture2D startButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64");
-            textures.Add(startButtonTexture);
+            #region Textures for the playButton and quitButton
+            Texture2D playButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64");
+            textures.Add(playButtonTexture);
             #endregion
 
-            Button startButton = new(startButtonTexture, Scenes.Level1);
-            gameObjects.Add(startButton);
+            SceneSwitchButton playButton = new(playButtonTexture, Scenes.Level1);
+            QuitButton quitButton = new(playButtonTexture);
+            gameObjects.Add(playButton);
+            gameObjects.Add(quitButton);
 
-            startButton.position = new Vector2(350, 225);
+            playButton.position = new(350, 200);
+            quitButton.position = new(350, 275);
         }
     }
 
@@ -80,20 +83,28 @@ namespace Assignments.Assignment2
             textures.Add(weaponTexture);
             #endregion
 
+            #region Textures for the menuButton
+            Texture2D menuButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64");
+            textures.Add(menuButtonTexture);
+            #endregion
+
             Player player = new(knightTexture, knightShieldTexture, knightWeaponTexture, knightWeaponShieldTexture);
             Weapon weapon = new(weaponTexture, player);
             Shield shield = new(shieldTexture, player);
             Gate gate = new(gateTexture, player, Scenes.Level2);
+            SceneSwitchButton menuButton = new(menuButtonTexture, Scenes.Menu);
 
             gameObjects.Add(player);
             gameObjects.Add(weapon);
             gameObjects.Add(shield);
             gameObjects.Add(gate);
+            gameObjects.Add(menuButton);
 
             player.position = new Vector2(400 , 400);
             weapon.position = new Vector2(200, 200);
             shield.position = new Vector2(600, 200);
             gate.position = new Vector2(400, 150);
+            menuButton.position = new Vector2(0, 0);
         }
     }
 
@@ -128,6 +139,11 @@ namespace Assignments.Assignment2
             textures.Add(gateTexture);
             #endregion
 
+            #region Textures for the menuButton
+            Texture2D menuButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64");
+            textures.Add(menuButtonTexture);
+            #endregion
+
             //made player a gameobject so that it can be passed from level1 to level2, don't like the way i'm doing this
             GameObject player = pPlayer;
             Gate gate = new(gateTexture, player, Scenes.Level1);
@@ -135,6 +151,7 @@ namespace Assignments.Assignment2
             Flag flag2 = new(flagTexture);
             Flag flag3 = new(flagTexture);
             Enemy enemy = new(enemyTexture, flag1, flag2, flag3);
+            SceneSwitchButton menuButton = new(menuButtonTexture, Scenes.Menu);
 
             gameObjects.Add(enemy);
             gameObjects.Add(player);
@@ -142,11 +159,14 @@ namespace Assignments.Assignment2
             gameObjects.Add(flag1);
             gameObjects.Add(flag2);
             gameObjects.Add(flag3);
+            gameObjects.Add(menuButton);
 
-            gate.position = new Vector2(0, 0);
-            flag1.position = new Vector2(200, 200);
-            flag2.position = new Vector2(200, 600);
-            flag3.position = new Vector2(400, 400);
+            gate.position = new(720, 0);
+            enemy.position = new(200, 200);
+            flag1.position = new(200, 200);
+            flag2.position = new(600, 200);
+            flag3.position = new(400, 400);
+            menuButton.position = new Vector2(0, 0);
         }
     }
 }
