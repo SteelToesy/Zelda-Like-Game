@@ -6,9 +6,16 @@ using System.Linq;
 
 namespace Assignments.Assignment2
 {
+    enum Scenes
+    {
+        Menu,
+        Level1,
+        Level2
+    }
     public class Game1 : Game
     {
-        public List<Scenes> scenes = new List<Scenes>();
+        public static int currentScene = 0;
+        public List<Scene> scenes = new List<Scene>();
         public SceneManager sceneManager = new SceneManager();
 
         private GraphicsDeviceManager _graphics;
@@ -32,14 +39,16 @@ namespace Assignments.Assignment2
 
             Menu menu = new(Content);
             Level1 level1 = new(Content);
+            Level2 level2 = new(Content, level1.gameObjects[0]);
 
             scenes.Add(menu);
             scenes.Add(level1);
+            scenes.Add(level2);
         }
 
         protected override void Update(GameTime gameTime)
         {
-            sceneManager.UpdateScene(scenes[1], gameTime);
+            sceneManager.UpdateScene(scenes[currentScene], gameTime);
             base.Update(gameTime);
         }
 
@@ -49,7 +58,7 @@ namespace Assignments.Assignment2
 
             _spriteBatch.Begin();
 
-            sceneManager.DrawScene(scenes[1], _spriteBatch);
+            sceneManager.DrawScene(scenes[currentScene], _spriteBatch);
 
             _spriteBatch.End();
             

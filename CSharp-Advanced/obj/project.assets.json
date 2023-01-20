@@ -222,23 +222,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dionv\\.nuget\\packages\\": {},
+    "C:\\Users\\Dion Vos\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dionv\\OneDrive\\Documents\\Github\\Zelda-Like-Game\\CSharp-Advanced\\CSharp-Advanced.csproj",
+      "projectUniqueName": "C:\\Users\\Dion Vos\\Documents\\GitHub\\Zelda-Like-Game\\CSharp-Advanced\\CSharp-Advanced.csproj",
       "projectName": "CSharp-Advanced",
-      "projectPath": "C:\\Users\\dionv\\OneDrive\\Documents\\Github\\Zelda-Like-Game\\CSharp-Advanced\\CSharp-Advanced.csproj",
-      "packagesPath": "C:\\Users\\dionv\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dionv\\OneDrive\\Documents\\Github\\Zelda-Like-Game\\CSharp-Advanced\\obj\\",
+      "projectPath": "C:\\Users\\Dion Vos\\Documents\\GitHub\\Zelda-Like-Game\\CSharp-Advanced\\CSharp-Advanced.csproj",
+      "packagesPath": "C:\\Users\\Dion Vos\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Dion Vos\\Documents\\GitHub\\Zelda-Like-Game\\CSharp-Advanced\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\dionv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dion Vos\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -294,7 +294,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

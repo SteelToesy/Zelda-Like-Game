@@ -86,3 +86,10 @@ C:\Users\dionv\OneDrive\Documents\Github\Zelda-Like-Game\CSharp-Advanced\obj\Deb
 C:\Users\dionv\OneDrive\Documents\Github\Zelda-Like-Game\CSharp-Advanced\obj\Debug\net6.0\CSharp-Advanced.pdb
 C:\Users\dionv\OneDrive\Documents\Github\Zelda-Like-Game\CSharp-Advanced\obj\Debug\net6.0\CSharp-Advanced.genruntimeconfig.cache
 C:\Users\dionv\OneDrive\Documents\Github\Zelda-Like-Game\CSharp-Advanced\obj\Debug\net6.0\ref\CSharp-Advanced.dll
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\Enemy.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\Flag.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\UI_Panel.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\UI_Slot.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\UI_Tile_128x64.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\UI_Tile_64x64.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\UI_Title.xnb

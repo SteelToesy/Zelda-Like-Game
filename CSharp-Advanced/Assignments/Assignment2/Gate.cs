@@ -8,9 +8,11 @@ namespace Assignments.Assignment2
 {
     internal class Gate : GameObject
     {
-        private Player _player;
-        public Gate(Texture2D texture, Player player) : base ("Gate")
+        private int _Scene;
+        private GameObject _player;
+        public Gate(Texture2D texture, GameObject player, Scenes scene) : base ("Gate")
         {
+            _Scene = (int)scene;
             _player = player;
             _texture = texture;
         }
@@ -23,7 +25,7 @@ namespace Assignments.Assignment2
             // If the player collides with the gate, the game ends
             // TODO make it so that it changes scene
             if (this.collisionBox.Intersects(_player.collisionBox))
-                Environment.Exit(0);
+                Game1.currentScene = _Scene;
         }
         public override void Draw(SpriteBatch pSpritebatch)
         {

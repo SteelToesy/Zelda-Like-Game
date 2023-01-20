@@ -24,7 +24,6 @@
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assignments\Assignment2\" />
     <Folder Include="Assignments\Assingment3\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
