@@ -8,18 +8,16 @@ using System.Threading.Tasks;
 
 namespace Assignments.Assignment2
 {
-    internal class SceneSwitchButton : Button
+    internal class PlayButton : Button
     {
-        private readonly Scenes _scene;
-        public SceneSwitchButton(Texture2D pTexture, Scenes pScene)
+        public PlayButton(Texture2D pTexture)
         {
-            _scene = pScene;    
             _texture = pTexture;
         }
 
         public override void ButtonAction()
         {
-            Game1.currentScene = _scene;
+            Game1.currentScene = Scenes.Level1;
             base.ButtonAction();
         }
 
@@ -27,12 +25,5 @@ namespace Assignments.Assignment2
         {
             pSpritebatch.Draw(_texture, position, buttonColor);
         }
-
-        //public override void Update(GameTime gameTime)
-        //{
-        //    Console.WriteLine("current Scene = " + Game1.currentScene);
-        //    Console.WriteLine("Button goes towards " + _scene);
-        //    base.Update(gameTime);
-        //}
     }
 }

@@ -49,7 +49,6 @@ namespace Assignments.Assignment2
 
         protected override void Update(GameTime gameTime)
         {
-            //Console.WriteLine(scenes[1].ToString());
             sceneManager.UpdateScene(scenes[(int)currentScene], gameTime);
             base.Update(gameTime);
         }

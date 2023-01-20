@@ -42,7 +42,7 @@ namespace Assignments.Assignment2
             textures.Add(playButtonTexture);
             #endregion
 
-            SceneSwitchButton playButton = new(playButtonTexture, Scenes.Level1);
+            PlayButton playButton = new(playButtonTexture);
             QuitButton quitButton = new(playButtonTexture);
             gameObjects.Add(playButton);
             gameObjects.Add(quitButton);
@@ -92,7 +92,7 @@ namespace Assignments.Assignment2
             Weapon weapon = new(weaponTexture, player);
             Shield shield = new(shieldTexture, player);
             Gate gate = new(gateTexture, player, Scenes.Level2);
-            SceneSwitchButton menuButton = new(menuButtonTexture, Scenes.Menu);
+            MenuButton menuButton = new(menuButtonTexture);
 
             gameObjects.Add(player);
             gameObjects.Add(weapon);
@@ -151,7 +151,7 @@ namespace Assignments.Assignment2
             Flag flag2 = new(flagTexture);
             Flag flag3 = new(flagTexture);
             Enemy enemy = new(enemyTexture, flag1, flag2, flag3);
-            SceneSwitchButton menuButton = new(menuButtonTexture, Scenes.Menu);
+            MenuButton menuButton = new(menuButtonTexture);
 
             gameObjects.Add(enemy);
             gameObjects.Add(player);
