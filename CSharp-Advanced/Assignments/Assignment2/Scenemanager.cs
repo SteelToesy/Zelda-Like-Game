@@ -16,7 +16,7 @@ namespace Assignments.Assignment2
         //I want to be able to Update different scenes here
         public void UpdateScene(Scene pScnene, GameTime gametime)
         {
-            pScnene.gameObjects.ForEach(obj => { if (obj.active) { obj.Update(gametime); }});
+            pScnene.gameObjects.ForEach(obj => { if (obj.active) { obj.Update(gametime); } });
         }
 
         //I want to be able to Draw scenes here
@@ -28,7 +28,6 @@ namespace Assignments.Assignment2
 
     public class Scene
     {
-        //protected ContentManager Content;
         public List<GameObject> gameObjects = new List<GameObject>();
         public List<Texture2D> textures = new List<Texture2D>();
     }
@@ -38,12 +37,15 @@ namespace Assignments.Assignment2
         public Menu(ContentManager Content)
         {
             #region Textures for the playButton and quitButton
-            Texture2D playButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64");
+            Texture2D playButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64_Play");
             textures.Add(playButtonTexture);
+
+            Texture2D quitButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64_Quit");
+            textures.Add(quitButtonTexture);
             #endregion
 
             PlayButton playButton = new(playButtonTexture);
-            QuitButton quitButton = new(playButtonTexture);
+            QuitButton quitButton = new(quitButtonTexture);
             gameObjects.Add(playButton);
             gameObjects.Add(quitButton);
 
@@ -84,7 +86,7 @@ namespace Assignments.Assignment2
             #endregion
 
             #region Textures for the menuButton
-            Texture2D menuButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64");
+            Texture2D menuButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64_Menu");
             textures.Add(menuButtonTexture);
             #endregion
 
@@ -100,7 +102,7 @@ namespace Assignments.Assignment2
             gameObjects.Add(gate);
             gameObjects.Add(menuButton);
 
-            player.position = new Vector2(400 , 400);
+            player.position = new Vector2(400, 400);
             weapon.position = new Vector2(200, 200);
             shield.position = new Vector2(600, 200);
             gate.position = new Vector2(400, 150);
@@ -140,17 +142,16 @@ namespace Assignments.Assignment2
             #endregion
 
             #region Textures for the menuButton
-            Texture2D menuButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64");
+            Texture2D menuButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64_Menu");
             textures.Add(menuButtonTexture);
             #endregion
 
-            //made player a gameobject so that it can be passed from level1 to level2, don't like the way i'm doing this
             GameObject player = pPlayer;
             Gate gate = new(gateTexture, player, Scenes.Level1);
             Flag flag1 = new(flagTexture);
             Flag flag2 = new(flagTexture);
             Flag flag3 = new(flagTexture);
-            Enemy enemy = new(enemyTexture, flag1, flag2, flag3);
+            Enemy enemy = new(enemyTexture, player, flag1, flag2, flag3);
             MenuButton menuButton = new(menuButtonTexture);
 
             gameObjects.Add(enemy);

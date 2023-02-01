@@ -1,7 +1,5 @@
-﻿using Assignments.Assignment1;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 
 namespace Assignments.Assignment2
 {
