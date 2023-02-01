@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Assignments.Assignment1;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -7,17 +8,28 @@ namespace Assignments.Assignment2
 {
     internal class Gate : GameObject
     {
-        public Gate(Texture2D texture) : base("gate", new Vector2(400, 200), texture)
+        private Scenes _Scene;
+        private GameObject _player;
+        public Gate(Texture2D texture, GameObject player, Scenes scene) : base ("Gate")
         {
+            _Scene = scene;
+            _player = player;
+            _texture = texture;
         }
-        public override void Update(GameTime pGameTime, List<GameObject> pGameObjects)
+        public override void Update(GameTime pGameTime)
         {
-            base.Update(pGameTime, pGameObjects);
+            base.Update(pGameTime);
         }
-        public override void OnCollision(List<GameObject> pGameObjects)
+        public override void OnCollision()
         {
-            if (this.collisionBox.Intersects(pGameObjects[0].collisionBox))
-                Environment.Exit(0);
+            // If the player collides with the gate, the game ends
+            // TODO make it so that it changes scene
+            if (this.collisionBox.Intersects(_player.collisionBox))
+                Game1.currentScene = _Scene;
+        }
+        public override void Draw(SpriteBatch pSpritebatch)
+        {
+            pSpritebatch.Draw(_texture, position, Color.White);
         }
     }
 }

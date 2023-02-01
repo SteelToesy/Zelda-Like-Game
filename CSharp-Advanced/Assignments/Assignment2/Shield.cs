@@ -1,29 +1,35 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 
 namespace Assignments.Assignment2
 {
     internal class Shield : GameObject
     {
-        public Shield(Texture2D texture) : base("shield", new Vector2(600, 200), texture)
+        private Player _player;
+        public Shield(Texture2D pTexture, Player pPlayer) : base ("Shield")
         {
-
+            _player = pPlayer;
+            _texture = pTexture;
         }
-        public override void Update(GameTime pGameTime, List<GameObject> pGameObjects)
+        public override void Update(GameTime pGameTime)
         {
-            base.Update(pGameTime, pGameObjects);
+            base.Update(pGameTime);
         }
-        public override void OnCollision(List<GameObject> pGameObjects)
+        public override void OnCollision()
         {
-            if (this.collisionBox.Intersects(pGameObjects[0].collisionBox))
+            // If the player collides with the shield, the player gets the shield
+            if (this.collisionBox.Intersects(_player.collisionBox))
             {
-                if (pGameObjects[0].textureIndexer == (int)Texture.PlayerWithWeapon)
-                    pGameObjects[0].textureIndexer = (int)Texture.PlayerWithWeaponAndShield;
+                if (_player.textureIndexer == (int)PlayerTexture.PlayerWithWeapon)
+                    _player.textureIndexer = (int)PlayerTexture.PlayerWithWeaponAndShield;
                 else
-                    pGameObjects[0].textureIndexer = (int)Texture.PlayerWithShield;
-                enabled = false;
+                    _player.textureIndexer = (int)PlayerTexture.PlayerWithShield;
+                active = false;
             }
+        }
+        public override void Draw(SpriteBatch pSpritebatch)
+        {
+            pSpritebatch.Draw(_texture, position, Color.White);
         }
     }
 }

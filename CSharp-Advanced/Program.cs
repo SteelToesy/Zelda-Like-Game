@@ -1,3 +1,3 @@
 ﻿
-using var game = new Assignments.Assignment2.Game1();
+using var game = new Assignments.Assignment25.Game1();
 game.Run();

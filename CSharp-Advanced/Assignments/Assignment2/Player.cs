@@ -1,23 +1,35 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Assignments.Assignment2
 {
+    public enum PlayerTexture
+    {
+        Player,
+        PlayerWithShield,
+        PlayerWithWeapon,
+        PlayerWithWeaponAndShield,
+    }
     internal class Player : GameObject 
     {
         private float _speed = 5f;
-
-        public Player(params Texture2D[] textures) : base("player", new Vector2(400, 400), textures)
+        
+        public Texture2D texture
         {
-            
+            get => _textures[textureIndexer];
         }
 
-        public override void Update(GameTime pGameTime, List<GameObject> gameObjects)
+        public Player(params Texture2D[] pTextures) : base ("Player")
         {
+            _textures = pTextures.ToList();
+            _texture = pTextures[0];
+        }
 
+        public override void Update(GameTime pGameTime)
+        {
+            // Normailized movement
             Vector2 movement = Vector2.Zero;
             if (Keyboard.GetState().IsKeyDown(Keys.W))
                 movement.Y -= 1;
@@ -29,10 +41,14 @@ namespace Assignments.Assignment2
                 movement.X += 1;
             if (movement != Vector2.Zero)
                 movement.Normalize();
-            _position = new Vector2(_position.X + movement.X * _speed, _position.Y + movement.Y * _speed);
+            position = new Vector2(position.X + movement.X * _speed, position.Y + movement.Y * _speed);
 
 
-            base.Update(pGameTime, gameObjects);  
+            base.Update(pGameTime);  
+        }
+        public override void Draw(SpriteBatch pSpritebatch)
+        {
+            pSpritebatch.Draw(texture, position, Color.White);
         }
     }
 }

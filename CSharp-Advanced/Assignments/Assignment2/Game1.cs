@@ -1,14 +1,22 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Assignments.Assignment3;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Assignments.Assignment2
 {
+    public enum Scenes
+    {
+        Menu,
+        Level1,
+        Level2
+    }
     public class Game1 : Game
     {
-        public List<GameObject> gameObjects = new List<GameObject>();
+        public static Scenes currentScene = Scenes.Menu;
+        public List<Scene> scenes = new List<Scene>();
+        public SceneManager sceneManager = new SceneManager();
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
@@ -20,9 +28,7 @@ namespace Assignments.Assignment2
         }
 
         protected override void Initialize()
-        {
-            // TODO: Add your initialization logic here
-
+        {            
             base.Initialize();
         }
 
@@ -30,35 +36,18 @@ namespace Assignments.Assignment2
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Texture2D knight = Content.Load<Texture2D>("Assets/Knight");
+            Menu menu = new(Content);
+            Level1 level1 = new(Content);
+            Level2 level2 = new(Content, level1.gameObjects[0]);
 
-            
-            //textures.Add(Content.Load<Texture2D>("Assets/Knight"));
-            Texture2D tex1 = Content.Load<Texture2D>("Assets/KnightShield");
-            Texture2D tex2 = Content.Load<Texture2D>("Assets/KnightWeapon");
-            Texture2D tex3 = Content.Load<Texture2D>("Assets/KnightWeaponShield");
-            Texture2D tex4 = Content.Load<Texture2D>("Assets/Gate");
-            Texture2D tex5 = Content.Load<Texture2D>("Assets/Shield");
-            Texture2D tex6 = Content.Load<Texture2D>("Assets/Weapon");
-
-            Player player = new Player(knight, tex1, tex2, tex3);
-            gameObjects.Add(player);
-            gameObjects.Add(new Weapon(tex6, player));
-            gameObjects.Add(new Shield(tex5));
-            gameObjects.Add(new Gate(tex4));
-            // TODO: use this.Content to load your game content here
+            scenes.Add(menu);
+            scenes.Add(level1);
+            scenes.Add(level2);
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            foreach (var gameObject in gameObjects.Where((GameObject x) => x.enabled)) 
-                gameObject.Update(gameTime, gameObjects);
-
-            // TODO: Add your update logic here
-
+            sceneManager.UpdateScene(scenes[(int)currentScene], gameTime);
             base.Update(gameTime);
         }
 
@@ -66,11 +55,10 @@ namespace Assignments.Assignment2
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
-
             _spriteBatch.Begin();
-            foreach (var gameObject in gameObjects.Where((GameObject x) => x.enabled))
-                gameObject.Draw(_spriteBatch);
+
+            sceneManager.DrawScene(scenes[(int)currentScene], _spriteBatch);
+
             _spriteBatch.End();
             
             base.Draw(gameTime);

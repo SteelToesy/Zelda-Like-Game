@@ -1,60 +1,42 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 
 namespace Assignments.Assignment2
 {
-    public enum Texture
-    {
-        Player,
-        PlayerWithShield,
-        PlayerWithWeapon,
-        PlayerWithWeaponAndShield,
-        Shield,
-        Weapon,
-        Gate
-    }
-
     public class GameObject
     {
-        protected string _name;
-        protected Vector2 _position;
         protected Texture2D _texture;
-
         protected List<Texture2D> _textures = new List<Texture2D>();
 
+        protected string _name;
+        public Vector2 position;
+
         public int textureIndexer = 0;
-        public bool enabled = true;
 
-        public Texture2D texture
-        {
-            get => _textures[textureIndexer];
-        }
-
+        public bool active = true;
+        
         public Rectangle collisionBox
         {
-            get => new Rectangle((int)_position.X, (int)_position.Y, texture.Width, texture.Height);
+            get => new((int)position.X, (int)position.Y, _texture.Width, _texture.Height);
         }
         
-        public GameObject(string pName, Vector2 pPosition, params Texture2D[] pTextures)
+        public GameObject(string pName, params Texture2D[] pTextures)
         {
-            _name = pName; 
-            _position = pPosition;
-            _textures = new List<Texture2D>(pTextures);
+
         }
         
-        public virtual void Update(GameTime pGameTime, List<GameObject> pGameObjects)
+        public virtual void Update(GameTime pGameTime)
         {
-            OnCollision(pGameObjects);
+            OnCollision();
         }
 
         public virtual void Draw(SpriteBatch pSpritebatch)
         { 
-            pSpritebatch.Draw(texture, _position, Color.White);
+            
         }
 
-        public virtual void OnCollision(List<GameObject> pGameObject)
+        public virtual void OnCollision()
         {
             
         }

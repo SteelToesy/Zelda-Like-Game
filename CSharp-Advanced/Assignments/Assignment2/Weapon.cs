@@ -1,44 +1,39 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
+
 
 namespace Assignments.Assignment2
 {
     internal class Weapon : GameObject
     {
         Player _player;
-        
-        public Weapon(Texture2D texture, Player pPlayer) : base("weapon", new Vector2(100, 200), texture)
+                
+        public Weapon(Texture2D pTexture, Player pPlayer) : base ("Weapon")
         {
             _player = pPlayer;
+            _texture = pTexture;
         }
 
-        public override void Update(GameTime pGameTime, List<GameObject> pGameObjects)
+        public override void Update(GameTime pGameTime)
         {
-            base.Update(pGameTime, pGameObjects);
+            base.Update(pGameTime);
         }
 
-        public override void OnCollision(List<GameObject> pGameObjects)
+        public override void OnCollision()
         {
-            if(collisionBox.Intersects(_player.collisionBox))
+            // If the player collides with the weapon, the player gets the weapon   
+            if (collisionBox.Intersects(_player.collisionBox))
             {
-                if (_player.textureIndexer == (int)Texture.PlayerWithShield)
-                    _player.textureIndexer = (int)Texture.PlayerWithWeaponAndShield;
+                if (_player.textureIndexer == (int)PlayerTexture.PlayerWithShield)
+                    _player.textureIndexer = (int)PlayerTexture.PlayerWithWeaponAndShield;
                 else
-                    _player.textureIndexer = (int)Texture.PlayerWithWeapon;
-                enabled = false;
+                    _player.textureIndexer = (int)PlayerTexture.PlayerWithWeapon;
+                active = false;
             }   
-            
-
-            //if (this.collisionBox.Intersects(pGameObjects[0].collisionBox))
-            //{
-            //    if (pGameObjects[0].textureIndexer == (int)Texture.PlayerWithShield)
-            //        pGameObjects[0].textureIndexer = (int)Texture.PlayerWithWeaponAndShield;
-            //    else
-            //        pGameObjects[0].textureIndexer = (int)Texture.PlayerWithWeapon;
-            //    enabled = false;
-            //}
+        }
+        public override void Draw(SpriteBatch pSpritebatch)
+        {
+            pSpritebatch.Draw(_texture, position, Color.White);
         }
     }
 }
