@@ -6,9 +6,9 @@ namespace Assignments.Assignment25
 {
     internal class Weapon : GameObject
     {
-        Player _player;
+        GameObject _player;
                 
-        public Weapon(Texture2D pTexture, Player pPlayer) : base ("Weapon")
+        public Weapon(Texture2D pTexture, GameObject pPlayer) : base ("Weapon")
         {
             _player = pPlayer;
             _texture = pTexture;

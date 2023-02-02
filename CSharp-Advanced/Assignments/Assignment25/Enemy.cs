@@ -30,16 +30,17 @@ namespace Assignments.Assignment25
         private EnemyState _state;
         private Flag[] _flags;
         int targetFlag = 0;
-        private int _speed;
+        private float _originalSpeed;
+        private float _speed;
         Vector2 directionPlayer;
 
-        public Enemy(Texture2D pTexture, GameObject pPlayer, params Flag[] pFlags) : base("Enemy")
+        public Enemy(Texture2D pTexture, GameObject pPlayer, float pSpeed, params Flag[] pFlags) : base("Enemy")
         {
             _state = EnemyState.Patrolling;
             _texture = pTexture;
             _flags = pFlags;
             _player = pPlayer;
-            _speed = 100;
+            _originalSpeed = pSpeed;
         }
         public override void Update(GameTime pGameTime)
         {
@@ -53,7 +54,7 @@ namespace Assignments.Assignment25
                     _speed = 0;
                     break;
                 case EnemyState.Patrolling:
-                    _speed = 75;
+                    _speed = _originalSpeed * 0.75f;
                     Patrol(pGameTime);
                     if (directionPlayer.Length() < 175 && _player.textureIndexer == 3) 
                         _state = EnemyState.Evading;
@@ -66,7 +67,7 @@ namespace Assignments.Assignment25
                     }
                     break;
                 case EnemyState.Chasing:
-                    _speed = 100;
+                    _speed = _originalSpeed;
                     MoveTowards(pGameTime, directionPlayer, false);
                     if (directionPlayer.Length() > 175)
                         _state = EnemyState.Patrolling;
@@ -77,7 +78,7 @@ namespace Assignments.Assignment25
                     }
                     break;
                 case EnemyState.Evading:
-                    _speed = 150;
+                    _speed = _originalSpeed * 1.5f; ;
                     MoveTowards(pGameTime, directionPlayer, true);
                     if (directionPlayer.Length() > 200)
                         _state = EnemyState.Patrolling;
@@ -100,12 +101,10 @@ namespace Assignments.Assignment25
             {
                 if (_player.textureIndexer == 3)
                 {
-                    active = false;
                     Game1.currentScene = Scenes.Victory;
                 }
                 else
                 {
-                    _player.active = false;
                     Game1.currentScene = Scenes.GameOver;
                 }
             }

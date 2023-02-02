@@ -10,6 +10,7 @@ namespace Assignments.Assignment25
         Menu,
         Level1,
         Level2,
+        Level3,
         GameOver,
         Victory
     }
@@ -40,13 +41,15 @@ namespace Assignments.Assignment25
 
             Menu menu = new(Content);
             Level1 level1 = new(Content);
-            Level2 level2 = new(Content, level1.gameObjects[0]);
+            Level2 level2 = new(level1.gameObjects[0], Content);
+            Level3 level3 = new(Content, level1.gameObjects[0]);
             GameOver gameOver = new(Content);
             GameVictory gameVictory = new(Content);
 
             scenes.Add(menu);
             scenes.Add(level1);
             scenes.Add(level2);
+            scenes.Add(level3);
             scenes.Add(gameOver);
             scenes.Add(gameVictory);
         }

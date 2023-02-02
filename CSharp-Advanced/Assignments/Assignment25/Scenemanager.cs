@@ -91,28 +91,69 @@ namespace Assignments.Assignment25
             #endregion
 
             Player player = new(knightTexture, knightShieldTexture, knightWeaponTexture, knightWeaponShieldTexture);
-            Weapon weapon = new(weaponTexture, player);
             Shield shield = new(shieldTexture, player);
             Gate gate = new(gateTexture, player, Scenes.Level2);
+            Gate gate2 = new(gateTexture, player, Scenes.Level3);
             MenuButton menuButton = new(menuButtonTexture);
 
             gameObjects.Add(player);
-            gameObjects.Add(weapon);
             gameObjects.Add(shield);
             gameObjects.Add(gate);
+            gameObjects.Add(gate2);
             gameObjects.Add(menuButton);
 
             player.position = new Vector2(400, 400);
-            weapon.position = new Vector2(200, 200);
             shield.position = new Vector2(600, 200);
             gate.position = new Vector2(400, 150);
+            gate2.position = new Vector2(200, 150);
             menuButton.position = new Vector2(0, 0);
+        }
+    }
+
+    public class Level3 : Scene
+    {
+        public Level3(ContentManager Content, GameObject pPlayer)
+        {
+            #region Textures for the player
+            Texture2D knightTexture = Content.Load<Texture2D>("Assets/Knight");
+            Texture2D knightShieldTexture = Content.Load<Texture2D>("Assets/KnightShield");
+            Texture2D knightWeaponTexture = Content.Load<Texture2D>("Assets/KnightWeapon");
+            Texture2D knightWeaponShieldTexture = Content.Load<Texture2D>("Assets/KnightWeaponShield");
+
+            textures.Add(knightTexture);
+            textures.Add(knightShieldTexture);
+            textures.Add(knightWeaponTexture);
+            textures.Add(knightWeaponShieldTexture);
+            #endregion
+            #region Textures for the Gate
+            Texture2D gateTexture = Content.Load<Texture2D>("Assets/Gate");
+            textures.Add(gateTexture);
+            #endregion
+            #region Textures for the menuButton
+            Texture2D menuButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64_Menu");
+            textures.Add(menuButtonTexture);
+            #endregion
+            #region Texture for the weapon
+            Texture2D weaponTexture = Content.Load<Texture2D>("Assets/Weapon");
+            textures.Add(weaponTexture);
+            #endregion
+
+            GameObject player = pPlayer;
+            Gate gate = new(gateTexture, player, Scenes.Level1);
+            Weapon weapon = new(weaponTexture, player);
+
+            gameObjects.Add(player);
+            gameObjects.Add(weapon);
+            gameObjects.Add(gate);
+
+            gate.position = new Vector2(720, 0);
+            weapon.position = new Vector2(200, 200);
         }
     }
 
     public class Level2 : Scene
     {
-        public Level2(ContentManager Content, GameObject pPlayer)
+        public Level2(GameObject pPlayer, ContentManager Content)
         {
             #region Textures for the player
             Texture2D knightTexture = Content.Load<Texture2D>("Assets/Knight");
@@ -151,22 +192,37 @@ namespace Assignments.Assignment25
             Flag flag1 = new(flagTexture);
             Flag flag2 = new(flagTexture);
             Flag flag3 = new(flagTexture);
-            Enemy enemy = new(enemyTexture, player, flag1, flag2, flag3);
+            Enemy enemy = new(enemyTexture, player, 100, flag1, flag2, flag3);
+
+            Flag flag4 = new(flagTexture);
+            Flag flag5 = new(flagTexture);
+            Flag flag6 = new(flagTexture);
+            Enemy enemy2 = new(enemyTexture, player, 200, flag4, flag5, flag6);
+
             MenuButton menuButton = new(menuButtonTexture);
 
             gameObjects.Add(enemy);
+            gameObjects.Add(enemy2);
             gameObjects.Add(player);
             gameObjects.Add(gate);
             gameObjects.Add(flag1);
             gameObjects.Add(flag2);
             gameObjects.Add(flag3);
+            gameObjects.Add(flag4);
+            gameObjects.Add(flag5);
+            gameObjects.Add(flag6);
             gameObjects.Add(menuButton);
 
             gate.position = new(720, 0);
             enemy.position = new(200, 200);
+            enemy2.position = new(400, 400);
             flag1.position = new(200, 200);
             flag2.position = new(600, 200);
             flag3.position = new(400, 400);
+            flag4.position = new(200, 300);
+            flag5.position = new(400, 200);
+            flag6.position = new(300, 100);
+
             menuButton.position = new Vector2(0, 0);
         }
     }
