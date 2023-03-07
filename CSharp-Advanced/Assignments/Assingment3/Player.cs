@@ -14,7 +14,7 @@ namespace Assignments.Assignment3
         PlayerWithWeapon,
         PlayerWithWeaponAndShield,
     }
-    internal class Player : GameObject 
+    public class Player : GameObject 
     {
         private float _speed = 5f;
         
@@ -23,8 +23,9 @@ namespace Assignments.Assignment3
             get => _textures[textureIndexer];
         }
 
-        public Player(params Texture2D[] pTextures) : base ("Player")
+        public Player(Vector2 pPosition, params Texture2D[] pTextures) : base(pPosition, pTextures)
         {
+            position= pPosition;
             _textures = pTextures.ToList();
             _texture = pTextures[0];
         }

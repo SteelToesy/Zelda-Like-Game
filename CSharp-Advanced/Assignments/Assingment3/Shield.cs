@@ -7,9 +7,11 @@ namespace Assignments.Assignment3
 {
     internal class Shield : GameObject
     {
+        SceneManager sceneManager;
         private Player _player;
-        public Shield(Texture2D pTexture, Player pPlayer) : base ("Shield")
+        public Shield(Vector2 pPosition, Texture2D pTexture, Player pPlayer, SceneManager pSceneManager) : base(pPosition)
         {
+            sceneManager = pSceneManager;
             _player = pPlayer;
             _texture = pTexture;
         }

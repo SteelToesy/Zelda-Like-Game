@@ -22,9 +22,9 @@ namespace Assignments.Assignment3
     {
         protected ButtonStates state;
         protected Color buttonColor;
-        public Button() : base("Button")
+        public Button(Vector2 pPosition) : base(pPosition)
         {
-
+            position = pPosition;
         }
 
         public override void Update(GameTime pGameTime)

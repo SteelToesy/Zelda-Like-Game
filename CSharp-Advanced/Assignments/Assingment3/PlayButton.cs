@@ -10,14 +10,16 @@ namespace Assignments.Assignment3
 {
     internal class PlayButton : Button
     {
-        public PlayButton(Texture2D pTexture)
+        private SceneManager _sceneManager;
+        public PlayButton(Vector2 pPosition, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition)
         {
+            _sceneManager = pSceneManager;
             _texture = pTexture;
         }
 
         public override void ButtonAction()
         {
-            //Game1.currentScene = Scenes.Level1;
+            _sceneManager.LoadScene(SceneTypes.Level1);
             base.ButtonAction();
         }
 

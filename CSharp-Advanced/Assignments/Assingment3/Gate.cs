@@ -8,13 +8,16 @@ namespace Assignments.Assignment3
 {
     internal class Gate : GameObject
     {
-        //private Scenes _Scene;
+        private SceneManager _sceneManager;
+        private SceneTypes _Scene;
         private GameObject _player;
-        public Gate(Texture2D texture, GameObject player/*, Scenes scene*/) : base ("Gate")
+        public Gate(Vector2 pPosition, Texture2D texture, GameObject player, SceneTypes scene, SceneManager sceneManager) : base(pPosition)
         {
-            //_Scene = scene;
+            position = pPosition;
+            _Scene = scene;
             _player = player;
             _texture = texture;
+            _sceneManager = sceneManager;
         }
         public override void Update(GameTime pGameTime)
         {
@@ -22,10 +25,10 @@ namespace Assignments.Assignment3
         }
         public override void OnCollision()
         {
-            // If the player collides with the gate, the game ends
-            // TODO make it so that it changes scene
-            //if (this.collisionBox.Intersects(_player.collisionBox))
-                //Game1.currentScene = _Scene;
+            if (this.collisionBox.Intersects(_player.collisionBox))
+            {
+                _sceneManager.LoadScene(_Scene);
+            }
         }
         public override void Draw(SpriteBatch pSpritebatch)
         {

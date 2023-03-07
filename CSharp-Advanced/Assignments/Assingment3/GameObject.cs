@@ -22,7 +22,11 @@ namespace Assignments.Assignment3
             get => new((int)position.X, (int)position.Y, _texture.Width, _texture.Height);
         }
 
-        public GameObject(string pName, params Texture2D[] pTextures) { }
+        public GameObject(Vector2 pPosition, params Texture2D[] pTextures) 
+        {
+            position= pPosition;
+            _textures = new List<Texture2D>(pTextures);
+        }
         
         public virtual void Update(GameTime pGameTime)
         {

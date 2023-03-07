@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,17 @@ namespace Assignments.Assignment3
 {
     internal class MenuButton : Button
     {
-        public MenuButton(Texture2D pTexture)
+        private SceneManager _sceneManager;
+        public MenuButton(Vector2 pPosition,Texture2D pTexture, SceneManager pSceneManager) : base(pPosition)
         {
+            _sceneManager = pSceneManager;
+            position = pPosition;
             _texture = pTexture;
         }
 
         public override void ButtonAction()
         {
-            //Game1.currentScene = Scenes.Menu;
+            _sceneManager.LoadScene(SceneTypes.Menu);
             base.ButtonAction();
         }
 

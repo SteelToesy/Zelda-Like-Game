@@ -10,8 +10,9 @@ namespace Assignments.Assignment3
 {
     internal class Flag : GameObject
     {
-        public Flag(Texture2D pTexture) : base ("Flag")
+        public Flag(Vector2 pPosition, Texture2D pTexture) : base(pPosition, pTexture)
         {
+            position= pPosition;
             _texture= pTexture;
         }
         public override void Update(GameTime pGameTime)

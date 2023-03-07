@@ -12,7 +12,7 @@ namespace Assignments.Assignment2
 
         public override void ButtonAction()
         {
-            Game1.currentScene = Scenes.Menu;
+            SceneManager.currentScene = Scenes.Menu;
             base.ButtonAction();
         }
 

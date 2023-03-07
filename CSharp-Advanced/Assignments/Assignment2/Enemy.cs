@@ -1,14 +1,8 @@
 ﻿using Assignments.Assignment1;
+using Assignments.Assignment3;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Assignments.Assignment2
 {

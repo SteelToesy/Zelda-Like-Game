@@ -25,7 +25,7 @@ namespace Assignments.Assignment2
             // If the player collides with the gate, the game ends
             // TODO make it so that it changes scene
             if (this.collisionBox.Intersects(_player.collisionBox))
-                Game1.currentScene = _Scene;
+                SceneManager.currentScene = _Scene;
         }
         public override void Draw(SpriteBatch pSpritebatch)
         {

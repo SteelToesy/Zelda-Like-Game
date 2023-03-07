@@ -13,9 +13,7 @@ namespace Assignments.Assignment2
     }
     public class Game1 : Game
     {
-        public static Scenes currentScene = Scenes.Menu;
-        public List<Scene> scenes = new List<Scene>();
-        public SceneManager sceneManager = new SceneManager();
+        public SceneManager sceneManager;
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -36,18 +34,12 @@ namespace Assignments.Assignment2
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Menu menu = new(Content);
-            Level1 level1 = new(Content);
-            Level2 level2 = new(Content, level1.gameObjects[0]);
-
-            scenes.Add(menu);
-            scenes.Add(level1);
-            scenes.Add(level2);
+            sceneManager = new(Content);
         }
 
         protected override void Update(GameTime gameTime)
         {
-            sceneManager.UpdateScene(scenes[(int)currentScene], gameTime);
+            sceneManager.UpdateScene(gameTime);
             base.Update(gameTime);
         }
 
@@ -57,7 +49,7 @@ namespace Assignments.Assignment2
 
             _spriteBatch.Begin();
 
-            sceneManager.DrawScene(scenes[(int)currentScene], _spriteBatch);
+            sceneManager.DrawScene(_spriteBatch);
 
             _spriteBatch.End();
             

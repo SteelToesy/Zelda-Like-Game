@@ -12,16 +12,16 @@ namespace Assignments.Assignment2
         PlayerWithWeapon,
         PlayerWithWeaponAndShield,
     }
-    internal class Player : GameObject 
+    internal class Player : GameObject
     {
         private float _speed = 5f;
-        
+
         public Texture2D texture
         {
             get => _textures[textureIndexer];
         }
 
-        public Player(params Texture2D[] pTextures) : base ("Player")
+        public Player(Vector2 pPosition, params Texture2D[] pTextures) : base("Player", pPosition)
         {
             _textures = pTextures.ToList();
             _texture = pTextures[0];
@@ -44,7 +44,7 @@ namespace Assignments.Assignment2
             position = new Vector2(position.X + movement.X * _speed, position.Y + movement.Y * _speed);
 
 
-            base.Update(pGameTime);  
+            base.Update(pGameTime);
         }
         public override void Draw(SpriteBatch pSpritebatch)
         {

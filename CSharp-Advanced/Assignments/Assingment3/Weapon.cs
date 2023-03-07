@@ -6,12 +6,14 @@ using System.Collections.Generic;
 
 namespace Assignments.Assignment3
 {
-    internal class Weapon : GameObject
+    class Weapon : GameObject
     {
-        Player _player;
+        SceneManager sceneManager;
+        GameObject _player;
                 
-        public Weapon(Texture2D pTexture, Player pPlayer) : base ("Weapon")
+        public Weapon(Vector2 pPosition, Texture2D pTexture, GameObject pPlayer, SceneManager pSceneManager) : base(pPosition)
         {
+            sceneManager = pSceneManager;
             _player = pPlayer;
             _texture = pTexture;
         }

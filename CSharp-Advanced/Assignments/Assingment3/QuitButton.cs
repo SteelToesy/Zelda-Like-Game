@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,9 @@ namespace Assignments.Assignment3
 {
     internal class QuitButton : Button
     {
-        public QuitButton(Texture2D pTexture) 
+        public QuitButton(Vector2 pPosition, Texture2D pTexture) : base(pPosition)
         {
+            position = pPosition;
             _texture = pTexture;
         }
         public override void ButtonAction()

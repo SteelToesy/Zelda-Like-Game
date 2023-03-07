@@ -23,9 +23,17 @@ namespace Assignments.Assignment2
         
         public GameObject(string pName, params Texture2D[] pTextures)
         {
-
+            _name = pName;
+            _textures = new List<Texture2D>(pTextures);
         }
-        
+
+        public GameObject(string pName, Vector2 pPosition, params Texture2D[] pTextures)
+        {
+            _name = pName;
+            position = pPosition;
+            _textures = new List<Texture2D>(pTextures);
+        }
+
         public virtual void Update(GameTime pGameTime)
         {
             OnCollision();

@@ -2,18 +2,21 @@
 using Microsoft.Xna.Framework.Graphics;
 
 
-namespace Assignments.Assignment25
+namespace Assignments.Assignment3
 {
-    internal class Flag : GameObject
+    internal class Image : GameObject
     {
-        public Flag(Texture2D pTexture) : base ("Flag")
+        public Image(Vector2 pPosition,Texture2D pTexture) : base(pPosition)
         {
-            _texture= pTexture;
+            position = pPosition;
+            _texture = pTexture;
         }
+
         public override void Update(GameTime pGameTime)
         {
             base.Update(pGameTime);
         }
+
         public override void Draw(SpriteBatch pSpritebatch)
         {
             pSpritebatch.Draw(_texture, position, Color.White);

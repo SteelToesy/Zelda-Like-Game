@@ -13,17 +13,39 @@ namespace Assignments.Assignment2
 {
     public class SceneManager
     {
-        //I want to be able to Update different scenes here
-        public void UpdateScene(Scene pScnene, GameTime gametime)
+        public static Scenes currentScene = Scenes.Menu;
+        public List<Scene> scenes = new List<Scene>();
+
+        public SceneManager(ContentManager Content) 
         {
-            pScnene.gameObjects.ForEach(obj => { if (obj.active) { obj.Update(gametime); } });
+            Menu menu = new(Content);
+            Level1 level1 = new(Content);
+            Level2 level2 = new(Content, level1.gameObjects[0]);
+
+            scenes.Add(menu);
+            scenes.Add(level1);
+            scenes.Add(level2);
+        } 
+
+
+        //I want to be able to Update different scenes here
+        public void UpdateScene(GameTime gametime)
+        {
+            Scene scene = scenes[(int)currentScene];
+            scene.gameObjects.ForEach(obj => { if (obj.active) { obj.Update(gametime); } });
         }
 
         //I want to be able to Draw scenes here
-        public void DrawScene(Scene pScnene, SpriteBatch pSpriteBatch)
+        public void DrawScene(SpriteBatch pSpriteBatch)
         {
-            pScnene.gameObjects.ForEach(obj => { if (obj.active) { obj.Draw(pSpriteBatch); } });
+            Scene scene = scenes[(int)currentScene];
+            scene.gameObjects.ForEach(obj => { if (obj.active) { obj.Draw(pSpriteBatch); } });
         }
+
+        //public void AddScene(Scene pNewScene)
+        //{
+        //    scenes.Add(pNewScene);
+        //}
     }
 
     public class Scene
@@ -90,7 +112,7 @@ namespace Assignments.Assignment2
             textures.Add(menuButtonTexture);
             #endregion
 
-            Player player = new(knightTexture, knightShieldTexture, knightWeaponTexture, knightWeaponShieldTexture);
+            Player player = new(new Vector2(400, 400), knightTexture, knightShieldTexture, knightWeaponTexture, knightWeaponShieldTexture);
             Weapon weapon = new(weaponTexture, player);
             Shield shield = new(shieldTexture, player);
             Gate gate = new(gateTexture, player, Scenes.Level2);
@@ -102,7 +124,6 @@ namespace Assignments.Assignment2
             gameObjects.Add(gate);
             gameObjects.Add(menuButton);
 
-            player.position = new Vector2(400, 400);
             weapon.position = new Vector2(200, 200);
             shield.position = new Vector2(600, 200);
             gate.position = new Vector2(400, 150);

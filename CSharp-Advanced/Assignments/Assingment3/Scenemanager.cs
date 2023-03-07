@@ -1,278 +1,221 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Assignments.Assignment2;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assignments.Assignment3
 {
-    #region opdracht 3 refactor
-
-    public class SceneBase : Game1
+    public enum SceneTypes
     {
+        Menu,
+        Level1,
+        Level2,
+        Level3,
+        GameOver,
+        Victory
+    }
+
+    public class SceneManager
+    {
+        private ContentManager content;
+        public List<Scene> sceneList;
+
+        private Scene currentScene;
+
+        public SceneManager(ContentManager pContent)
+        {
+            content = pContent;
+
+            Menu menu = new(pContent, this);
+            Level1 level1 = new(pContent, this);
+            Level2 level2 = new(pContent, this, level1.player);
+            Level3 level3 = new(pContent, this, level1.player);
+
+            sceneList = new List<Scene>
+            {
+                menu,
+                level1,
+                level2,
+                level3
+            };
+
+            currentScene = menu;
+        }
+
+        public void LoadScene(SceneTypes pScene)
+        {
+            foreach (Scene scene in sceneList)
+                if (scene.type == pScene)
+                    currentScene = scene;
+        }
+
+        //I want to be able to Update different scenes here
+        public void UpdateScene(GameTime gametime)
+        {
+            currentScene.gameObjects.ForEach(obj => { if (obj.active) { obj.Update(gametime); } });
+        }
+
+        //I want to be able to Draw scenes here
+        public void DrawScene(SpriteBatch pSpriteBatch)
+        {
+            currentScene.gameObjects.ForEach(obj => { if (obj.active) { obj.Draw(pSpriteBatch); } });
+        }
+    }
+
+    public class Scene
+    {
+        public SceneTypes type;
         public List<GameObject> gameObjects = new();
-
-        protected virtual void LoadSceneContent() { }
-        protected virtual void UpdateScene(GameTime gametime) { }
-        protected virtual void DrawScene(GameTime gametime) { }
     }
 
-    public class Menu : SceneBase
+    public class Menu : Scene
     {
-        Texture2D playButtonTexture;
-        Texture2D quitButtonTexture;
-        public Menu()
+        public Menu(ContentManager pContent, SceneManager pSceneManager)
         {
-            PlayButton playButton = new(playButtonTexture);
-            QuitButton quitButton = new(quitButtonTexture);
-        }
+            type = SceneTypes.Menu;
 
-        protected override void LoadSceneContent()
-        {
-            playButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64_Play");
-            quitButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64_Quit");
-        }
+            Texture2D playButtonTexture = pContent.Load<Texture2D>("Assets/UI_Tile_128x64_Play");
+            Texture2D quitButtonTexture = pContent.Load<Texture2D>("Assets/UI_Tile_128x64_Quit");
 
-        protected override void UpdateScene(GameTime gametime)
-        {
-            gameObjects.ForEach(obj => { if (obj.active) { obj.Update(gametime); } });
-        }
+            PlayButton playButton = new(new(350, 200), playButtonTexture, pSceneManager);
+            QuitButton quitButton = new(new(350, 275), quitButtonTexture);
 
-        protected override void DrawScene(GameTime gametime)
-        {
-            _spriteBatch.Begin();
-            gameObjects.ForEach(obj => { if (obj.active) { obj.Draw(_spriteBatch); } });
-            _spriteBatch.End();
+            gameObjects.Add(playButton);
+            gameObjects.Add(quitButton);
         }
     }
 
-    //public class Level1 : SceneBase
-    //{
-    //    protected override void LoadSceneContent()
-    //    {
+    public class Level1 : Scene
+    {
+        public Player player;
+        public Level1(ContentManager pContent, SceneManager pSceneManager)
+        {
+            type = SceneTypes.Level1;
 
-    //    }
-    //    protected override void UpdateScene(GameTime gametime)
-    //    {
+            Texture2D knightTexture = pContent.Load<Texture2D>("Assets/Knight");
+            Texture2D knightShieldTexture = pContent.Load<Texture2D>("Assets/KnightShield");
+            Texture2D knightWeaponTexture = pContent.Load<Texture2D>("Assets/KnightWeapon");
+            Texture2D knightWeaponShieldTexture = pContent.Load<Texture2D>("Assets/KnightWeaponShield");
 
-    //    }
-    //    protected override void DrawScene(GameTime gametime)
-    //    {
+            Texture2D gateTexture = pContent.Load<Texture2D>("Assets/Gate");
+            Texture2D shieldTexture = pContent.Load<Texture2D>("Assets/Shield");
+            Texture2D menuButtonTexture = pContent.Load<Texture2D>("Assets/UI_Tile_128x64_Menu");
 
-    //    }
-    //}
+            player = new(new Vector2(400, 400), knightTexture, knightShieldTexture, knightWeaponTexture, knightWeaponShieldTexture);
+            Shield shield = new(new Vector2(600, 200), shieldTexture, player, pSceneManager);
+            Gate gate = new(new Vector2(400, 150), gateTexture, player, SceneTypes.Level2, pSceneManager);
+            Gate gate2 = new(new Vector2(200, 200), gateTexture, player, SceneTypes.Level3, pSceneManager);
+            MenuButton menuButton = new(new Vector2(0, 0), menuButtonTexture, pSceneManager);
 
-    //public class Level2 : SceneBase
-    //{
-    //    protected override void LoadSceneContent()
-    //    {
+            gameObjects.Add(player);
+            gameObjects.Add(gate);
+            gameObjects.Add(gate2);
+            gameObjects.Add(menuButton);
+            gameObjects.Add(shield);
+        }
+    }
 
-    //    }
-    //    protected override void UpdateScene(GameTime gametime)
-    //    {
+    public class Level2 : Scene
+    {
+        public Level2(ContentManager pContent, SceneManager pSceneManager, Player pPlayer)
+        {
+            type = SceneTypes.Level2;
 
-    //    }
-    //    protected override void DrawScene(GameTime gametime)
-    //    {
+            Texture2D knightTexture = pContent.Load<Texture2D>("Assets/Knight");
+            Texture2D knightShieldTexture = pContent.Load<Texture2D>("Assets/KnightShield");
+            Texture2D knightWeaponTexture = pContent.Load<Texture2D>("Assets/KnightWeapon");
+            Texture2D knightWeaponShieldTexture = pContent.Load<Texture2D>("Assets/KnightWeaponShield");
 
-    //    }
-    //}
+            Texture2D weaponTexture = pContent.Load<Texture2D>("Assets/Weapon");
+            Texture2D gateTexture = pContent.Load<Texture2D>("Assets/Gate");
+            Texture2D menuButtonTexture = pContent.Load<Texture2D>("Assets/UI_Tile_128x64_Menu");
 
-    //public class VictoryScreen : SceneBase
-    //{
-    //    protected override void LoadSceneContent()
-    //    {
+            Player player = pPlayer;
+            Weapon weapon = new(new Vector2(200, 200), weaponTexture, player, pSceneManager);
+            Gate gate = new(new(750, 0), gateTexture, player, SceneTypes.Level1, pSceneManager);
+            MenuButton menuButton = new(new Vector2(0, 0), menuButtonTexture, pSceneManager);
 
-    //    }
-    //    protected override void UpdateScene(GameTime gametime)
-    //    {
+            gameObjects.Add(player);
+            gameObjects.Add(gate);
+            gameObjects.Add(menuButton);
+            gameObjects.Add(weapon);
+        }
+    }
+    
+    public class Level3 : Scene
+    {
+        public Level3(ContentManager pContent, SceneManager pSceneManager, Player pPlayer)
+        {
+            type = SceneTypes.Level3;
 
-    //    }
-    //    protected override void DrawScene(GameTime gametime)
-    //    {
+            Texture2D knightTexture = pContent.Load<Texture2D>("Assets/Knight");
+            Texture2D knightShieldTexture = pContent.Load<Texture2D>("Assets/KnightShield");
+            Texture2D knightWeaponTexture = pContent.Load<Texture2D>("Assets/KnightWeapon");
+            Texture2D knightWeaponShieldTexture = pContent.Load<Texture2D>("Assets/KnightWeaponShield");
 
-    //    }
-    //}
+            Texture2D enemyTexture = pContent.Load<Texture2D>("Assets/Enemy");
+            Texture2D flagTexture = pContent.Load<Texture2D>("Assets/Flag");
+            Texture2D gateTexture = pContent.Load<Texture2D>("Assets/Gate");
+            Texture2D menuButtonTexture = pContent.Load<Texture2D>("Assets/UI_Tile_128x64_Menu");
 
-    //public class DefeatScreen : SceneBase
-    //{
-    //    protected override void LoadSceneContent()
-    //    {
+            Gate gate = new(new(750, 0), gateTexture, pPlayer, SceneTypes.Level1, pSceneManager);
+            Flag flag1 = new(new(200, 200), flagTexture);
+            Flag flag2 = new(new(600, 200), flagTexture);
+            Flag flag3 = new(new(400, 350), flagTexture);
+            Enemy enemy = new(new(200, 200), enemyTexture, pPlayer, flag1, flag2, flag3);
+            MenuButton menuButton = new(new Vector2(0, 0), menuButtonTexture, pSceneManager);
 
-    //    }
-    //    protected override void UpdateScene(GameTime gametime)
-    //    {
+            gameObjects.Add(pPlayer);
+            gameObjects.Add(gate);
+            gameObjects.Add(flag1);
+            gameObjects.Add(flag2);
+            gameObjects.Add(flag3);
+            gameObjects.Add(enemy);
+            gameObjects.Add(menuButton);
+        }
+    }
 
-    //    }
-    //    protected override void DrawScene(GameTime gametime)
-    //    {
+    public class GameOver : Scene
+    {
+        public GameOver(ContentManager Content, SceneManager pSceneManager)
+        {
+            type = SceneTypes.GameOver;
 
-    //    }
-    //}
-    #endregion
+            Texture2D defeatTexture = Content.Load<Texture2D>("Assets/Defeat");
+            Texture2D playButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64_Play");
+            Texture2D quitButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64_Quit");
 
-    //    public class SceneManager
-    //    {
-    //        //I want to be able to Update different scenes here
-    //        public void UpdateScene(Scene pScnene, GameTime gametime)
-    //        {
-    //            pScnene.gameObjects.ForEach(obj => { if (obj.active) { obj.Update(gametime); } });
-    //        }
+            Image defeatImage = new(new(275, 50), defeatTexture);
+            PlayButton playButton = new(new(350, 275), playButtonTexture, pSceneManager);
+            QuitButton quitButton = new(new(350, 350), quitButtonTexture);
+            
+            gameObjects.Add(defeatImage);
+            gameObjects.Add(playButton);
+            gameObjects.Add(quitButton);
+        }
+    }
 
-    //        //I want to be able to Draw scenes here
-    //        public void DrawScene(Scene pScnene, SpriteBatch pSpriteBatch)
-    //        {
-    //            pScnene.gameObjects.ForEach(obj => { if (obj.active) { obj.Draw(pSpriteBatch); } });
-    //        }
-    //    }
+    public class GameVictory : Scene
+    {
+        public GameVictory(ContentManager Content, SceneManager pSceneManager)
+        {
+            type = SceneTypes.Victory;
 
-    //    public class Scene
-    //    {
-    //        public List<GameObject> gameObjects = new List<GameObject>();
-    //        public List<Texture2D> textures = new List<Texture2D>();
-    //    }
+            Texture2D victoryTexture = Content.Load<Texture2D>("Assets/Victory");
+            Texture2D playButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64_Play");
+            Texture2D quitButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64_Quit");
 
-    //    public class Menu : Scene
-    //    {
-    //        public Menu(ContentManager Content)
-    //        {
-    //            #region Textures for the playButton and quitButton
-    //            Texture2D playButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64_Play");
-    //            textures.Add(playButtonTexture);
-
-    //            Texture2D quitButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64_Quit");
-    //            textures.Add(quitButtonTexture);
-    //            #endregion
-
-    //            PlayButton playButton = new(playButtonTexture);
-    //            QuitButton quitButton = new(quitButtonTexture);
-    //            gameObjects.Add(playButton);
-    //            gameObjects.Add(quitButton);
-
-    //            playButton.position = new(350, 200);
-    //            quitButton.position = new(350, 275);
-    //        }
-    //    }
-
-    //    public class Level1 : Scene
-    //    {
-    //        public Level1(ContentManager Content)
-    //        {
-    //            #region Textures for the player
-    //            Texture2D knightTexture = Content.Load<Texture2D>("Assets/Knight");
-    //            Texture2D knightShieldTexture = Content.Load<Texture2D>("Assets/KnightShield");
-    //            Texture2D knightWeaponTexture = Content.Load<Texture2D>("Assets/KnightWeapon");
-    //            Texture2D knightWeaponShieldTexture = Content.Load<Texture2D>("Assets/KnightWeaponShield");
-
-    //            textures.Add(knightTexture);
-    //            textures.Add(knightShieldTexture);
-    //            textures.Add(knightWeaponTexture);
-    //            textures.Add(knightWeaponShieldTexture);
-    //            #endregion
-
-    //            #region Textures for the Gate
-    //            Texture2D gateTexture = Content.Load<Texture2D>("Assets/Gate");
-    //            textures.Add(gateTexture);
-    //            #endregion
-
-    //            #region Textures for the shield
-    //            Texture2D shieldTexture = Content.Load<Texture2D>("Assets/Shield");
-    //            textures.Add(shieldTexture);
-    //            #endregion
-
-    //            #region Texture for the weapon
-    //            Texture2D weaponTexture = Content.Load<Texture2D>("Assets/Weapon");
-    //            textures.Add(weaponTexture);
-    //            #endregion
-
-    //            #region Textures for the menuButton
-    //            Texture2D menuButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64_Menu");
-    //            textures.Add(menuButtonTexture);
-    //            #endregion
-
-    //            Player player = new(knightTexture, knightShieldTexture, knightWeaponTexture, knightWeaponShieldTexture);
-    //            Weapon weapon = new(weaponTexture, player);
-    //            Shield shield = new(shieldTexture, player);
-    //            Gate gate = new(gateTexture, player/*, Scenes.Level2*/);
-    //            MenuButton menuButton = new(menuButtonTexture);
-
-    //            gameObjects.Add(player);
-    //            gameObjects.Add(weapon);
-    //            gameObjects.Add(shield);
-    //            gameObjects.Add(gate);
-    //            gameObjects.Add(menuButton);
-
-    //            player.position = new Vector2(400, 400);
-    //            weapon.position = new Vector2(200, 200);
-    //            shield.position = new Vector2(600, 200);
-    //            gate.position = new Vector2(400, 150);
-    //            menuButton.position = new Vector2(0, 0);
-    //        }
-    //    }
-
-    //    public class Level2 : Scene
-    //    {
-    //        public Level2(ContentManager Content, GameObject pPlayer)
-    //        {
-    //            #region Textures for the player
-    //            Texture2D knightTexture = Content.Load<Texture2D>("Assets/Knight");
-    //            Texture2D knightShieldTexture = Content.Load<Texture2D>("Assets/KnightShield");
-    //            Texture2D knightWeaponTexture = Content.Load<Texture2D>("Assets/KnightWeapon");
-    //            Texture2D knightWeaponShieldTexture = Content.Load<Texture2D>("Assets/KnightWeaponShield");
-
-    //            textures.Add(knightTexture);
-    //            textures.Add(knightShieldTexture);
-    //            textures.Add(knightWeaponTexture);
-    //            textures.Add(knightWeaponShieldTexture);
-    //            #endregion
-
-    //            #region Textures for the enemy
-    //            Texture2D enemyTexture = Content.Load<Texture2D>("Assets/Enemy");
-    //            textures.Add(enemyTexture);
-    //            #endregion
-
-    //            #region Textures for the flag
-    //            Texture2D flagTexture = Content.Load<Texture2D>("Assets/Flag");
-    //            textures.Add(flagTexture);
-    //            #endregion
-
-    //            #region Textures for the Gate
-    //            Texture2D gateTexture = Content.Load<Texture2D>("Assets/Gate");
-    //            textures.Add(gateTexture);
-    //            #endregion
-
-    //            #region Textures for the menuButton
-    //            Texture2D menuButtonTexture = Content.Load<Texture2D>("Assets/UI_Tile_128x64_Menu");
-    //            textures.Add(menuButtonTexture);
-    //            #endregion
-
-    //            GameObject player = pPlayer;
-    //            Gate gate = new(gateTexture, player/*, Scenes.Level1*/);
-    //            Flag flag1 = new(flagTexture);
-    //            Flag flag2 = new(flagTexture);
-    //            Flag flag3 = new(flagTexture);
-    //            Enemy enemy = new(enemyTexture, player, flag1, flag2, flag3);
-    //            MenuButton menuButton = new(menuButtonTexture);
-
-    //            gameObjects.Add(enemy);
-    //            gameObjects.Add(player);
-    //            gameObjects.Add(gate);
-    //            gameObjects.Add(flag1);
-    //            gameObjects.Add(flag2);
-    //            gameObjects.Add(flag3);
-    //            gameObjects.Add(menuButton);
-
-    //            gate.position = new(720, 0);
-    //            enemy.position = new(200, 200);
-    //            flag1.position = new(200, 200);
-    //            flag2.position = new(600, 200);
-    //            flag3.position = new(400, 400);
-    //            menuButton.position = new Vector2(0, 0);
-    //        }
-    //    }
+            Image victoryImage = new(new(275, 50), victoryTexture);
+            PlayButton playButton = new(new(350, 275), playButtonTexture, pSceneManager);
+            QuitButton quitButton = new(new(350, 350), quitButtonTexture);
+            
+            gameObjects.Add(victoryImage);
+            gameObjects.Add(playButton);
+            gameObjects.Add(quitButton);
+        }
+    }
+    
 }
+
