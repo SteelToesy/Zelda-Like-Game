@@ -91,10 +91,13 @@ C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net
 C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\UI_Panel.xnb
 C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\UI_Slot.xnb
 C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\UI_Tile_128x64.xnb
-C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\UI_Tile_64x64.xnb
-C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\UI_Title.xnb
 C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\UI_Tile_128x64_Menu.xnb
 C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\UI_Tile_128x64_Play.xnb
 C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\UI_Tile_128x64_Quit.xnb
 C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\Defeat.xnb
 C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\Victory.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\Health-1HP.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\Health-2HP.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\Health-3HP.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\Enemy2.xnb
+C:\Users\Dion Vos\Documents\GitHub\Zelda-Like-Game\CSharp-Advanced\bin\Debug\net6.0\Content\Assets\HealthPickup.xnb

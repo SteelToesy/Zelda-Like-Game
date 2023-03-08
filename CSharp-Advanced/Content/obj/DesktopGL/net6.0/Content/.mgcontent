@@ -6,8 +6,13 @@
   <SourceFiles>
     <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/Defeat.png</File>
     <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/Enemy.png</File>
+    <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/Enemy2.png</File>
     <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/Flag.png</File>
     <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/Gate.png</File>
+    <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/Health-1HP.png</File>
+    <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/Health-2HP.png</File>
+    <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/Health-3HP.png</File>
+    <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/HealthPickup.png</File>
     <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/Knight.png</File>
     <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/KnightShield.png</File>
     <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/KnightWeapon.png</File>
@@ -18,12 +23,13 @@
     <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/UI_Tile_128x64_Menu.png</File>
     <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/UI_Tile_128x64_Play.png</File>
     <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/UI_Tile_128x64_Quit.png</File>
-    <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/UI_Tile_64x64.png</File>
-    <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/UI_Title.png</File>
     <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/Victory.png</File>
     <File>C:/Users/Dion Vos/Documents/GitHub/Zelda-Like-Game/CSharp-Advanced/Content/Assets/Weapon.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

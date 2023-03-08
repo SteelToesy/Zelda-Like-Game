@@ -19,6 +19,7 @@ namespace Assignments.Assignment3
 
         public override void ButtonAction()
         {
+            _sceneManager.NewGame(_sceneManager.content);
             _sceneManager.LoadScene(SceneTypes.Level1);
             base.ButtonAction();
         }

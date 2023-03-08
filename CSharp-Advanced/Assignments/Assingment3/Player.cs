@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Assignments.Assingment3;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -17,20 +18,35 @@ namespace Assignments.Assignment3
     public class Player : GameObject 
     {
         private float _speed = 5f;
-        
+        private HealthBar _healthbar;
+        private SceneManager _sceneManager;
+
         public Texture2D texture
         {
             get => _textures[textureIndexer];
         }
 
-        public Player(Vector2 pPosition, params Texture2D[] pTextures) : base(pPosition, pTextures)
+        public Player(Vector2 pPosition, HealthBar pHealthBar, SceneManager pSceneManager, params Texture2D[] pTextures) : base(pPosition, pTextures)
         {
             position= pPosition;
             _textures = pTextures.ToList();
             _texture = pTextures[0];
+            _healthbar = pHealthBar;
+            _sceneManager = pSceneManager;
         }
 
         public override void Update(GameTime pGameTime)
+        {
+            Movement();
+
+            base.Update(pGameTime);  
+        }
+        public override void Draw(SpriteBatch pSpritebatch)
+        {
+            pSpritebatch.Draw(texture, position, Color.White);
+        }
+
+        public void Movement()
         {
             // Normailized movement
             Vector2 movement = Vector2.Zero;
@@ -45,13 +61,20 @@ namespace Assignments.Assignment3
             if (movement != Vector2.Zero)
                 movement.Normalize();
             position = new Vector2(position.X + movement.X * _speed, position.Y + movement.Y * _speed);
-
-
-            base.Update(pGameTime);  
         }
-        public override void Draw(SpriteBatch pSpritebatch)
+        
+        public void TakeDamage()
         {
-            pSpritebatch.Draw(texture, position, Color.White);
+            position = new Vector2(100, 0);
+            _healthbar.health--;
+            if (_healthbar.health <= 0)
+                _sceneManager.LoadScene(SceneTypes.GameOver);
+        }
+
+        public void Heal()
+        {
+            if (_healthbar.health != 3)
+                _healthbar.health++;
         }
     }
 }
