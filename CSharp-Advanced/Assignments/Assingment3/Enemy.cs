@@ -53,6 +53,9 @@ namespace Assignments.Assignment3
                 else
                     player.TakeDamage();
             }
+
+            if (sceneManager.enemiesKilled == 2)
+                sceneManager.LoadScene(SceneTypes.Victory);
         }
 
         public class EnemyStateBase
@@ -68,8 +71,8 @@ namespace Assignments.Assignment3
 
         class EnemyStateIdle : EnemyStateBase
         {
-            private float time = 0;
-            private float idleStopTime = 1.5f;
+            private float _time = 0;
+            private float _idleStopTime = 1.5f;
             public EnemyStateIdle(Enemy pEnemy) : base(pEnemy)
             {
 
@@ -77,14 +80,14 @@ namespace Assignments.Assignment3
 
             public override void Update(GameTime pGameTime)
             {
-                if (time >= idleStopTime)
+                if (_time >= _idleStopTime)
                 {
-                    time = 0;
-                    idleStopTime = (time < idleStopTime + 0.1f ? idleStopTime : time + 4);
+                    _time = 0;
+                    _idleStopTime = (_time < _idleStopTime + 0.1f ? _idleStopTime : _time + 4);
                     _enemy.currentState = _enemy.enemyPatrolling;
                 }
 
-                time += (float)pGameTime.ElapsedGameTime.TotalSeconds;
+                _time += (float)pGameTime.ElapsedGameTime.TotalSeconds;
             }
         }
 
@@ -160,13 +163,13 @@ namespace Assignments.Assignment3
 
         class EnemyStateChasing : EnemyStateBase
         {
+            private Player _player;
             private float _speed;
 
-            private float deltaTime;
-            private float time = 0;
-            private float idleDelay = 5;
+            private float _deltaTime;
+            private float _time = 0;
+            private float _idleDelay = 5;
 
-            private Player _player;
             private Vector2 _directionPlayer;
             public EnemyStateChasing(Enemy pEnemy, Player pPlayer, float pSpeed) : base(pEnemy)
             {
@@ -176,8 +179,8 @@ namespace Assignments.Assignment3
 
             public override void Update(GameTime pGameTime)
             {
-                time += (float)pGameTime.ElapsedGameTime.TotalSeconds;
-                deltaTime = (float)pGameTime.ElapsedGameTime.TotalSeconds;
+                _time += (float)pGameTime.ElapsedGameTime.TotalSeconds;
+                _deltaTime = (float)pGameTime.ElapsedGameTime.TotalSeconds;
 
 
                 Chasing();
@@ -189,17 +192,17 @@ namespace Assignments.Assignment3
             {
                 _directionPlayer = _player.position - _enemy.position;
                 _directionPlayer.Normalize();
-                _enemy.position += _directionPlayer * _speed * deltaTime;
+                _enemy.position += _directionPlayer * _speed * _deltaTime;
             }
 
             public void IdleCounter()
             {
-                idleDelay = (time < idleDelay + 0.1f ? idleDelay : time + 4);
+                _idleDelay = (_time < _idleDelay + 0.1f ? _idleDelay : _time + 4);
 
-                if (time >= idleDelay)
+                if (_time >= _idleDelay)
                 {
                     _enemy.currentState = _enemy.enemyIdle;
-                    time = 0;
+                    _time = 0;
                 }
             }
 
@@ -212,7 +215,7 @@ namespace Assignments.Assignment3
 
         class EnemyStateEvading : EnemyStateBase
         {
-            private float deltaTime;
+            private float _deltaTime;
             private float _speed;
             private Player _player;
             private Vector2 _directionPlayer;
@@ -224,7 +227,7 @@ namespace Assignments.Assignment3
 
             public override void Update(GameTime pGameTime)
             {
-                deltaTime = (float)pGameTime.ElapsedGameTime.TotalSeconds;
+                _deltaTime = (float)pGameTime.ElapsedGameTime.TotalSeconds;
 
                 Evade();
                 CheckForPlayer();
@@ -235,7 +238,7 @@ namespace Assignments.Assignment3
                 _directionPlayer = _player.position - _enemy.position;
 
                 _directionPlayer.Normalize();
-                _enemy.position -= _directionPlayer * _speed * deltaTime;
+                _enemy.position -= _directionPlayer * _speed * _deltaTime;
             }
 
             public void CheckForPlayer()

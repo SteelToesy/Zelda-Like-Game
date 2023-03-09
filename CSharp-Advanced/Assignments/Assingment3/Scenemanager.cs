@@ -20,10 +20,11 @@ namespace Assignments.Assignment3
 
     public class SceneManager
     {
+        private Scene _currentScene;
+
         public ContentManager content;
         public List<Scene> sceneList;
 
-        private Scene currentScene;
         public int enemiesKilled;
 
         public SceneManager(ContentManager pContent)
@@ -36,21 +37,17 @@ namespace Assignments.Assignment3
         {
             foreach (Scene scene in sceneList)
                 if (scene.type == pScene)
-                    currentScene = scene;
+                    _currentScene = scene;
         }
 
-        //I want to be able to Update different scenes here
         public void UpdateScene(GameTime gametime)
         {
-            currentScene.gameObjects.ForEach(obj => { if (obj.active) { obj.Update(gametime); } });
-            if (enemiesKilled == 2)
-                LoadScene(SceneTypes.Victory);
+            _currentScene.gameObjects.ForEach(obj => { if (obj.active) { obj.Update(gametime); } });
         }
 
-        //I want to be able to Draw scenes here
         public void DrawScene(SpriteBatch pSpriteBatch)
         {
-            currentScene.gameObjects.ForEach(obj => { if (obj.active) { obj.Draw(pSpriteBatch); } });
+            _currentScene.gameObjects.ForEach(obj => { if (obj.active) { obj.Draw(pSpriteBatch); } });
         }
 
         public void NewGame(ContentManager pContent)
@@ -74,7 +71,7 @@ namespace Assignments.Assignment3
                 victory
             };
 
-            currentScene = menu;
+            _currentScene = menu;
         }
     }
 
@@ -189,7 +186,7 @@ namespace Assignments.Assignment3
             Flag flag4 = new(new(100, 400), flagTexture);
             Flag flag5 = new(new(400, 100), flagTexture);
             Flag flag6 = new(new(200, 350), flagTexture);
-            Enemy enemy2 = new(new(600, 100), enemyTexture2, 100 ,pSceneManager, pPlayer, flag4, flag5, flag6);
+            Enemy enemy2 = new(new(600, 100), enemyTexture2, 150 ,pSceneManager, pPlayer, flag4, flag5, flag6);
             MenuButton menuButton = new(new Vector2(0, 0), menuButtonTexture, pSceneManager);
 
             gameObjects.Add(pHealthBar);

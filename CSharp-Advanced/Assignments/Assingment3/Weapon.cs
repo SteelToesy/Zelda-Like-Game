@@ -8,12 +8,12 @@ namespace Assignments.Assignment3
 {
     class Weapon : GameObject
     {
-        SceneManager sceneManager;
-        GameObject _player;
+        private SceneManager _sceneManager;
+        private GameObject _player;
                 
         public Weapon(Vector2 pPosition, Texture2D pTexture, GameObject pPlayer, SceneManager pSceneManager) : base(pPosition)
         {
-            sceneManager = pSceneManager;
+            _sceneManager = pSceneManager;
             _player = pPlayer;
             _texture = pTexture;
         }
